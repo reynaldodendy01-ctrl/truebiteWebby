@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('locations', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('type');
+            $table->string('address');
+            $table->string('google_maps_link')->nullable();
             $table->timestamps();
         });
     }

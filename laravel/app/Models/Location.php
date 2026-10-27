@@ -9,4 +9,11 @@ class Location extends Model
 {
     /** @use HasFactory<\Database\Factories\LocationFactory> */
     use HasFactory;
+
+    protected $fillable = [
+        'name',
+        'type',
+        'address',
+        'google_maps_link'
+    ];
 }

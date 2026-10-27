@@ -13,6 +13,7 @@
         <a href="/">Home</a>
         <a href="/menu">Menu</a>
         <a href="/faqs">FAQ</a>
+        <a href="/locations">Lokasi</a>
     </nav>
 </header>
 
