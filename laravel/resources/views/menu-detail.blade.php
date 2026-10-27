@@ -7,18 +7,10 @@
 </head>
 <body>
 
-    <header>
-        <h1>TRUEBITE.</h1>
-        <nav>
-            <a href="/">Home</a>  
-            <a href="/menu">Menu</a>
-            <a href="/faqs">FAQ</a>
-        </nav>
-    </header>
+   @extends('layouts.app')
+   @section('title', $product->name)
 
-    <hr>
-
-    <main>
+    @section('content')
         <p><a href="/menu">&larr; Kembali ke Katalog Menu</a></p>
 
         <article>
@@ -45,13 +37,7 @@
                 <button type="button">Pesan via WhatsApp</button>
             </a>
         </article>
-    </main>
-
-    <hr>
-
-    <footer>
-        <p>&copy; {{ date('Y') }} TrueBite Protein Snack.</p>
-    </footer>
+    @endsection
 
 </body>
 </html>

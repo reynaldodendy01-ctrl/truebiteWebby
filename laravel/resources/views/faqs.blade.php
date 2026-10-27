@@ -7,18 +7,10 @@
 </head>
 <body>
 
-    <header>
-        <h1>TRUEBITE.</h1>
-        <nav>
-            <a href="/">Home</a>  
-            <a href="/menu">Menu</a>
-            <a href="/faqs">FAQ</a>
-        </nav>
-    </header>
+    @extends('layouts.app')
+    @section('title', 'FAQ')
 
-    <hr>
-
-    <main>
+    @section('content')
         <h2>faqqqq</h2>
 
         @foreach($faqs as $faq)
@@ -28,13 +20,7 @@
             </article>
             <hr>
         @endforeach
-    </main>
-
-    <footer>
-        <p>&copy; {{ date('Y') }} TrueBite Protein Snack.</p>
-    </footer>
-
-    </footer>
+    @endsection
 
 </body>
 </html>

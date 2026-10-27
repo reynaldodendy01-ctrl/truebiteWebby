@@ -6,19 +6,9 @@
     <title>Menu Katalog - TrueBite</title>
 </head>
 <body>
-
-    <header>
-        <h1>TRUEBITE.</h1>
-        <nav>
-            <a href="/">Home</a>  
-            <a href="/menu">Menu</a>
-            <a href="/faqs">FAQ</a>
-        </nav>
-    </header>
-
-    <hr>
-
-    <main>
+    @extends('layouts.app')
+    @section('title', 'Menu Katalog')
+    @section('content')
         <h2>Katalog Snack Protein</h2>
 
         @foreach($products as $product)
@@ -31,11 +21,7 @@
             </article>
             <hr>
         @endforeach
-    </main>
-
-    <footer>
-        <p>&copy; {{ date('Y') }} TrueBite Protein Snack.</p>
-    </footer>
+    @endsection
 
 </body>
 </html>
