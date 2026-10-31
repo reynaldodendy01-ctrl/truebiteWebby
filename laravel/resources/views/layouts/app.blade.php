@@ -14,6 +14,7 @@
         <a href="/menu">Menu</a>
         <a href="/faqs">FAQ</a>
         <a href="/location">Lokasi</a>
+        <a href="/testimonials">Testimonials</a>
     </nav>
 </header>
 

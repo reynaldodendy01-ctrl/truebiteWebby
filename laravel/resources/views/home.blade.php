@@ -42,7 +42,15 @@
             @endforeach
             <a href="/locations">Lihat semua lokasi</a>
         </section>
-
+        <section>
+            <h2>Testimoni</h2>
+            @foreach($testimonials as $testimonial)
+                <article>
+                    <p>"{{ $testimonial->review }}"</p>
+                    <p><strong>{{ $testimonial->customer_name }}</strong> - {{ $testimonial->role_or_club }}</p>
+                </article>
+            @endforeach
+        </section>
         <section>
             <h2>FAQ</h2>
             @foreach($faqs as $faq)
