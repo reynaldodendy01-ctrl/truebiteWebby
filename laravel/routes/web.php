@@ -4,11 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\FAQController;
 use App\Http\Controllers\LocationController;
+use App\Http\Controllers\HomeController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+Route::get('/', [HomeController::class, 'index']);
 Route::get('/menu', [ProductController::class, 'index']);
 Route::get('/menu/{slug}', [ProductController::class, 'show']);
 
