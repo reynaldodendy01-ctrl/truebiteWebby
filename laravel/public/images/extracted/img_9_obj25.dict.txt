@@ -1,0 +1,8 @@
+/Type /XObject
+/Subtype /Image
+/Width 320
+/Height 97
+/ColorSpace [/ICCBased 8 0 R]
+/BitsPerComponent 8
+/Filter /FlateDecode
+/Length 3190

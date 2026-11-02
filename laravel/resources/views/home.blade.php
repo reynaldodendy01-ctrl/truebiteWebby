@@ -33,37 +33,14 @@
                     </div>
                 </div>
 
-                {{-- Right Column: Bento Hero Feature Card --}}
-                <div class="lg:col-span-5">
-                    <div class="bg-cocoa text-cream p-7 sm:p-9 rounded-3xl lg:rounded-4xl border-2 border-caramel/40 space-y-5">
-                        <div class="flex items-center justify-between">
-                            <span class="text-amber text-xs font-bold uppercase tracking-widest">TRUEBITE NUTRITION</span>
-                            <span class="px-3 py-1 rounded-full bg-caramel/50 text-[11px] font-bold text-cream">Mindful Choice</span>
-                        </div>
-
-                        <h2 class="font-heading text-2xl sm:text-3xl text-cream tracking-tight leading-snug">
-                            The Crunch
-                        </h2>
-
-                        {{-- Bento flat graphic placeholder --}}
-                        <div class="w-full h-44 rounded-2xl bg-caramel/40 border border-caramel/50 flex flex-col items-center justify-center text-center p-4">
-                            <span class="font-heading text-3xl tracking-tight text-cream">TrueBite</span>
-                            <span class="text-xs font-bold text-amber mt-1 tracking-wider uppercase">A Little More To Love</span>
-                            <span class="mt-3 px-3.5 py-1 rounded-full bg-cocoa text-[11px] text-cream/90 font-medium">
-                                100% Real Protein &bull; Mindful Snack
-                            </span>
-                        </div>
-
-                        <div class="grid grid-cols-2 gap-3 pt-1">
-                            <div class="bg-caramel/30 rounded-2xl p-3 text-center border border-caramel/30">
-                                <div class="text-xs text-cream/80 font-medium">Protein Tinggi</div>
-                                <div class="font-heading text-amber text-lg mt-0.5">Optimal</div>
-                            </div>
-                            <div class="bg-caramel/30 rounded-2xl p-3 text-center border border-caramel/30">
-                                <div class="text-xs text-cream/80 font-medium">Kalori Terukur</div>
-                                <div class="font-heading text-cream text-lg mt-0.5">Praktis</div>
-                            </div>
-                        </div>
+                {{-- Right Column: Packaging Photo TrueBite --}}
+                <div class="lg:col-span-5 flex items-center justify-center">
+                    <div class="relative w-full max-w-lg mx-auto flex flex-col items-center justify-center p-2">
+                        {{-- Ambient subtle warm glow behind packaging --}}
+                        <div class="absolute inset-0 bg-amber/20 rounded-full blur-3xl -z-10 transform scale-90"></div>
+                        <img src="{{ asset('images/packaging-transparent.png') }}" 
+                             alt="TrueBite Crispy Brownies Packaging" 
+                             class="w-full max-w-sm sm:max-w-md h-auto object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-300">
                     </div>
                 </div>
 
@@ -95,38 +72,37 @@
     <section class="py-16 sm:py-20 lg:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
             <div>
-                <span class="text-xs font-bold uppercase tracking-widest text-caramel">Koleksi Pilihan</span>
-                <h2 class="font-heading text-3xl sm:text-5xl text-cocoa tracking-tight mt-1">Varian Favorit</h2>
-                <p class="text-cocoa/80 text-sm sm:text-base max-w-lg mt-2">
-                    Pilihan camilan kaya protein untuk melengkapi momen aktif dan gaya hidupmu.
+                <h2 class="font-heading text-3xl sm:text-5xl text-cocoa tracking-tight">Meet Your New Favourite Bites.</h2>
+                <p class="text-cocoa/80 text-sm sm:text-base max-w-xl mt-2">
+                    Made for your everyday cravings, active moments, and everything in between.
                 </p>
             </div>
             <div>
                 <a href="/menu" class="hidden sm:inline-flex items-center gap-2 btn-pill-secondary px-6 py-2.5 text-sm border-2 border-caramel/40">
-                    Explore The Bites &rarr;
+                    Explore All The Bites &rarr;
                 </a>
             </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             @foreach($products as $product)
                 <article class="bg-[#F8E2BE] border-2 border-caramel/30 rounded-3xl p-6 flex flex-col justify-between hover:border-burnt/50 transition">
                     <div>
                         {{-- Panel gambar atau placeholder bento --}}
-                        @if(isset($product->image) && $product->image)
-                            <div class="w-full h-48 rounded-2xl overflow-hidden bg-cream mb-5">
-                                <img src="{{ asset('images/products/' . $product->image) }}" alt="{{ $product->name }}" class="w-full h-full object-cover">
+                        @if(isset($product->image) && $product->image && file_exists(public_path('images/products/' . $product->image)))
+                            <div class="w-full h-48 rounded-2xl overflow-hidden bg-cream mb-5 flex items-center justify-center p-2">
+                                <img src="{{ asset('images/products/' . $product->image) }}" alt="{{ $product->name }}" class="w-full h-full object-contain">
                             </div>
                         @else
                             {{-- Bento flat color placeholder tanpa foto rusak --}}
                             <div class="w-full h-48 rounded-2xl bg-cocoa flex flex-col items-center justify-center text-center p-4 mb-5 border border-caramel/30">
                                 <span class="font-heading text-xl text-cream tracking-tight">{{ $product->name }}</span>
-                                <span class="text-xs font-bold text-amber mt-1 tracking-wider uppercase">Protein Snack</span>
-                                <span class="mt-3 px-3 py-1 rounded-full bg-caramel/60 text-[11px] text-cream font-bold">TrueBite Original</span>
+                                <span class="text-xs font-bold text-amber mt-1 tracking-wider uppercase">Crispy Brownies</span>
+                                <span class="mt-3 px-3 py-1 rounded-full bg-caramel/60 text-[11px] text-cream font-bold">10g Protein</span>
                             </div>
                         @endif
 
-                        <h3 class="font-heading text-2xl text-cocoa tracking-tight mb-2">
+                        <h3 class="font-heading text-xl text-cocoa tracking-tight mb-2">
                             {{ $product->name }}
                         </h3>
 
@@ -135,9 +111,11 @@
                             <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-gorilla text-white">
                                 {{ $product->protein_grams }}g Protein
                             </span>
-                            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-caramel/30 text-cocoa">
-                                {{ $product->calories }} kcal
-                            </span>
+                            @if(isset($product->calories) && $product->calories)
+                                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-caramel/30 text-cocoa">
+                                    {{ $product->calories }} kcal
+                                </span>
+                            @endif
                         </div>
 
                         <div class="text-xl font-heading text-burnt mb-6">
@@ -146,7 +124,7 @@
                     </div>
 
                     <a href="/menu/{{ $product->slug }}" class="w-full text-center btn-pill-primary py-3 text-sm">
-                        Lihat Detail
+                        More Details
                     </a>
                 </article>
             @endforeach
@@ -154,7 +132,7 @@
 
         <div class="mt-8 text-center sm:hidden">
             <a href="/menu" class="w-full inline-flex justify-center btn-pill-secondary px-6 py-3 text-sm border-2 border-caramel/40">
-                Explore The Bites &rarr;
+                Explore All The Bites &rarr;
             </a>
         </div>
     </section>
@@ -249,7 +227,7 @@
                 Snack lezat berprotein tinggi yang siap menemani setiap momen aktif dan dinamis harimu.
             </p>
             <div class="pt-2">
-                <a href="{{ config('services.truebite.whatsapp', '#') }}?text={{ urlencode('Halo TrueBite, saya mau pesan snack protein sekarang!') }}" target="_blank" rel="noopener noreferrer" class="btn-pill-primary px-8 py-4 text-base font-bold inline-flex items-center gap-2 shadow-none border-2 border-white/20">
+                <a href="{{ config('services.truebite.whatsapp') ?: 'https://wa.me/628113777353' }}?text={{ urlencode('Halo TrueBite, saya mau pesan snack protein sekarang!') }}" target="_blank" rel="noopener noreferrer" class="btn-pill-primary px-8 py-4 text-base font-bold inline-flex items-center gap-2 shadow-none border-2 border-white/20">
                     <svg class="w-5 h-5 fill-current shrink-0" viewBox="0 0 24 24" aria-hidden="true">
                         <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
                     </svg>

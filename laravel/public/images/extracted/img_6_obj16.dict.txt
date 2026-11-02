@@ -1,0 +1,18 @@
+/CA 1
+/ca 1
+/LC 0
+/LJ 0
+/LW 1.33333337
+/ML 10
+/SA true
+/BM /Normal>>
+endobj
+17 0 obj
+<</Type /XObject
+/Subtype /Image
+/Width 306
+/Height 107
+/ColorSpace [/ICCBased 8 0 R]
+/BitsPerComponent 8
+/Filter /FlateDecode
+/Length 3983
