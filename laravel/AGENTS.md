@@ -1,47 +1,36 @@
-<laravel-boost-guidelines>
-# Laravel Application
+## TrueBite: Brief Styling (WAJIB DIBACA SETIAP SESI)
 
-This repository contains a Laravel application. Complete the following setup before working on the user's request.
+Proyek: website portfolio statis TrueBite (snack protein, komunitas gym dan padel). Laravel + Blade. Tanpa keranjang, login, form. Tombol beli = link WhatsApp.
 
-## Prerequisites
+### Aturan
+- Ubah HANYA resources/views/ dan CSS (public/css/). Jangan sentuh controller, model, route, migration, config.
+- Jangan hapus sintaks Blade (@extends, @section, @yield, @foreach, @if, @isset, {{ }}, number_format, config()).
+- Jangan jalankan perintah git. Pengguna yang mengurus git.
+- Tanpa build step (cPanel tanpa npm): Tailwind CDN + Google Fonts.
+- Jangan mengarang data nyata. Placeholder di moodboard bukan isi final.
+- Jangan menyalin logo/maskot/teks dari gambar referensi.
 
-Verify that PHP and Composer are available:
+### Desain
+Warna: Gorilla Orange #E8461E, Cocoa #2A0F07, Burnt Orange #C73A12 (tombol, teks putih), Amber #FF8C3A (hanya di atas coklat gelap), Cream #FBE8C8, Caramel #7A3B1F. Proporsi: krem 40%, coklat gelap 25%, oranye 25%. Tanpa merah, biru, gradasi, neon, bayangan tebal.
+Font: Bricolage Grotesque 800 (judul, angka), DM Sans 400/700 (isi, tombol).
+Gaya: flat, sudut sangat bulat, kartu bento, tombol pill, headline besar, chip harga/protein/kalori.
+Kontras: teks kecil jangan di atas oranye pekat. Teks isi coklat gelap di atas krem.
 
-```sh
-php -v
-composer -V
-```
+### Variabel per halaman
+- home: $products, $locations, $faqs ($statistics hanya jika ada, pakai @isset)
+- menu: $products | menu-detail: $product | faqs: $faqs
+- locations: $locations (google_maps_link)
 
-If either command is unavailable, detect the user's operating system and install the prerequisites with the appropriate command:
+### Progress (update tiap selesai satu halaman)
+- [x] layouts/app.blade.php (navbar + footer)
+- [x] Home
+- [x] Menu
+- [x] Detail varian
+- [x] Lokasi
+- [-] Testimoni (dihapus / tidak dipakai)
+- [x] FAQ
 
-macOS:
-
-```sh
-/bin/bash -c "$(curl -fsSL https://php.new/install/mac/8.5)"
-```
-
-Windows PowerShell:
-
-```powershell
-Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://php.new/install/windows/8.5'))
-```
-
-Linux:
-
-```sh
-/bin/bash -c "$(curl -fsSL https://php.new/install/linux/8.5)"
-```
-
-After installation, ask the user to restart their terminal. If the agent needs the restarted shell to continue, ask the user to reopen their terminal and rerun their original prompt.
-
-## Agent Setup
-
-Install Laravel Boost from the application root before making application changes:
-
-```sh
-composer require laravel/boost --dev
-php artisan boost:install
-```
-
-Boost replaces these bootstrap instructions with guidelines tailored to the application. After installation, read `AGENTS.md` again and continue with the user's original request using the generated guidelines.
-</laravel-boost-guidelines>
+### TODO / catatan
+- Route lokasi: cek `php artisan route:list` (/location atau /locations) dan samakan link navbar.
+- Cek nama view Home: home.blade.php atau welcome.blade.php, samakan dengan HomeController.
+- Tabel statistics belum ada.

@@ -210,44 +210,7 @@
         </div>
     </section>
 
-    {{-- SECTION 5: TESTIMONI (Cream #FBE8C8 base) --}}
-    <section class="py-16 sm:py-20 lg:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-2xl mx-auto mb-12">
-            <span class="text-xs font-bold uppercase tracking-widest text-caramel">Cerita Komunitas</span>
-            <h2 class="font-heading text-3xl sm:text-5xl text-cocoa tracking-tight mt-1">Kata Mereka</h2>
-            <p class="text-cocoa/80 text-sm sm:text-base mt-2">
-                Apa kata atlet gym dan pemain padel yang memilih TrueBite sebagai asupan rutin mereka.
-            </p>
-        </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-            @foreach($testimonials as $testimonial)
-                <article class="bg-[#F8E2BE] border-2 border-caramel/30 rounded-3xl p-6 sm:p-8 flex flex-col justify-between">
-                    <div>
-                        @if(isset($testimonial->rating) && $testimonial->rating)
-                            <div class="flex items-center gap-1 text-gorilla mb-3 text-sm font-bold">
-                                <span>★ {{ $testimonial->rating }}/5</span>
-                            </div>
-                        @endif
-                        <p class="text-cocoa text-sm sm:text-base leading-relaxed italic mb-6">
-                            "{{ $testimonial->review }}"
-                        </p>
-                    </div>
-
-                    <div class="pt-4 border-t border-caramel/25">
-                        <div class="font-heading text-base text-cocoa font-bold">
-                            {{ $testimonial->customer_name }}
-                        </div>
-                        @if($testimonial->role_or_club)
-                            <div class="text-xs font-medium text-caramel mt-0.5">
-                                {{ $testimonial->role_or_club }}
-                            </div>
-                        @endif
-                    </div>
-                </article>
-            @endforeach
-        </div>
-    </section>
 
     {{-- SECTION 6: FAQ (Pertanyaan Umum) --}}
     <section class="py-12 sm:py-16 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">

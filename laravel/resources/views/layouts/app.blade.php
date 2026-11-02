@@ -123,9 +123,7 @@
                     <a href="/location" class="px-3.5 py-2 rounded-full transition {{ (request()->is('location*') || request()->is('locations*')) ? 'text-amber font-bold bg-caramel/30' : 'text-cream/90 hover:text-amber hover:bg-caramel/20' }}">
                         Lokasi
                     </a>
-                    <a href="/testimonials" class="px-3.5 py-2 rounded-full transition {{ request()->is('testimonials*') ? 'text-amber font-bold bg-caramel/30' : 'text-cream/90 hover:text-amber hover:bg-caramel/20' }}">
-                        Testimoni
-                    </a>
+
                     <a href="/faqs" class="px-3.5 py-2 rounded-full transition {{ request()->is('faqs*') ? 'text-amber font-bold bg-caramel/30' : 'text-cream/90 hover:text-amber hover:bg-caramel/20' }}">
                         FAQ
                     </a>
@@ -160,9 +158,7 @@
             <a href="/location" class="block px-4 py-3 rounded-2xl text-base font-bold transition {{ (request()->is('location*') || request()->is('locations*')) ? 'bg-gorilla text-white' : 'text-cream hover:bg-caramel/30' }}">
                 Lokasi
             </a>
-            <a href="/testimonials" class="block px-4 py-3 rounded-2xl text-base font-bold transition {{ request()->is('testimonials*') ? 'bg-gorilla text-white' : 'text-cream hover:bg-caramel/30' }}">
-                Testimoni
-            </a>
+
             <a href="/faqs" class="block px-4 py-3 rounded-2xl text-base font-bold transition {{ request()->is('faqs*') ? 'bg-gorilla text-white' : 'text-cream hover:bg-caramel/30' }}">
                 FAQ
             </a>
@@ -211,9 +207,7 @@
                         <li>
                             <a href="/location" class="text-cream/80 hover:text-amber transition">Titik Lokasi</a>
                         </li>
-                        <li>
-                            <a href="/testimonials" class="text-cream/80 hover:text-amber transition">Testimoni Komunitas</a>
-                        </li>
+
                         <li>
                             <a href="/faqs" class="text-cream/80 hover:text-amber transition">Pertanyaan Umum (FAQ)</a>
                         </li>
