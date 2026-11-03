@@ -5,12 +5,12 @@
 @section('content')
 
     {{-- SECTION 1: HERO (Brand Orange #DE5A17 Blok Besar) --}}
-    <section class="bg-gorilla text-white relative overflow-hidden py-14 sm:py-20 lg:py-24">
+    <section class="bg-gorilla text-white relative overflow-hidden py-10 sm:py-16 lg:py-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-6 items-center">
                 
                 {{-- Left Column: Headline & Action Buttons --}}
-                <div class="lg:col-span-7 space-y-6">
+                <div class="lg:col-span-6 space-y-6">
                     <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cocoa text-cream text-xs sm:text-sm font-semibold tracking-wide">
                         <span>Made for Movement</span>
                     </div>
@@ -34,13 +34,17 @@
                 </div>
 
                 {{-- Right Column: Packaging Photo TrueBite --}}
-                <div class="lg:col-span-5 flex items-center justify-center">
-                    <div class="relative w-full max-w-lg mx-auto flex flex-col items-center justify-center p-2">
-                        {{-- Ambient subtle warm glow behind packaging --}}
-                        <div class="absolute inset-0 bg-amber/20 rounded-full blur-3xl -z-10 transform scale-90"></div>
-                        <img src="{{ asset('images/packaging-transparent.png') }}" 
-                             alt="TrueBite Crispy Brownies Packaging" 
-                             class="w-full max-w-sm sm:max-w-md h-auto object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-300">
+                <div class="lg:col-span-6 flex items-stretch justify-center overflow-visible">
+                    <div class="relative w-full flex items-center justify-center" style="margin-top:-3rem; margin-bottom:-3rem;">
+                        {{-- Ambient warm glow --}}
+                        <div class="absolute inset-0 rounded-full blur-3xl -z-10" style="background:radial-gradient(ellipse at center,rgba(254,158,50,0.35) 0%,transparent 60%); transform:scale(1.2);"></div>
+                        <a href="https://s.shopee.co.id/BV46KyWYa" target="_blank" rel="noopener noreferrer" class="block w-full cursor-pointer">
+                            <img src="{{ asset('images/packaging-hero.png') }}" 
+                                 alt="TrueBite Crispy Brownies - Almond & Cheese" 
+                                 class="w-full h-auto object-contain hover:scale-105 transition-transform duration-300"
+                                 style="filter: drop-shadow(0 32px 72px rgba(76,29,16,0.40)); max-width:none;"
+                                 draggable="false">
+                        </a>
                     </div>
                 </div>
 
@@ -84,22 +88,128 @@
             </div>
         </div>
 
+        @php
+            $canonicalProducts = [
+                (object)[
+                    'id' => 1,
+                    'name' => 'TrueBite Crispy Brownies - Original',
+                    'slug' => 'truebite-crispy-brownies-original',
+                    'price' => 42000,
+                    'protein_grams' => 10,
+                    'calories' => 180,
+                    'image' => 'crispy-brownies-original.jpg',
+                    'description' => 'A healthy, high-protein snack combining a rich dark chocolate flavor with an indulgent crispy brownie texture. Each pack contains 10g of protein, formulated to be gluten-free and low in sugar, and sweetened with natural stevia for a smarter snacking choice.',
+                ],
+                (object)[
+                    'id' => 2,
+                    'name' => 'TrueBite Crispy Brownies - Almond',
+                    'slug' => 'truebite-crispy-brownies-almond',
+                    'price' => 44000,
+                    'protein_grams' => 10,
+                    'calories' => 190,
+                    'image' => 'crispy-brownies-almond.jpg',
+                    'description' => 'A healthy, high-protein snack combining a rich almond flavor with an indulgent crispy brownie texture. Each pack contains 10g of protein, formulated to be gluten-free, and sweetened with natural stevia for a smarter snacking choice.',
+                ],
+                (object)[
+                    'id' => 3,
+                    'name' => 'TrueBite Crispy Brownies - Cheese',
+                    'slug' => 'truebite-crispy-brownies-cheese',
+                    'price' => 43000,
+                    'protein_grams' => 10,
+                    'calories' => 190,
+                    'image' => 'crispy-brownies-cheese.jpg',
+                    'description' => 'A healthy, high-protein snack combining a rich cheese flavor with an indulgent crispy brownie texture. Each pack contains 10g of protein, formulated to be gluten-free and low in sugar, and sweetened with natural stevia for a smarter snacking choice.',
+                ],
+                (object)[
+                    'id' => 4,
+                    'name' => 'TrueBite Crispy Brownies - Peanut',
+                    'slug' => 'truebite-crispy-brownies-peanut',
+                    'price' => 43000,
+                    'protein_grams' => 10,
+                    'calories' => 190,
+                    'image' => 'crispy-brownies-peanut.jpg',
+                    'description' => 'A healthy, high-protein snack combining a rich peanut flavor with an indulgent crispy brownie texture. Each pack contains 10g of protein, formulated to be gluten-free and low in sugar, and sweetened with natural stevia for a smarter snacking choice.',
+                ],
+            ];
+
+            $shopeeMap = [
+                'original' => 'https://shopee.co.id/TrueBite-Protein-Snack-Original-Dark-Chocolate-Crispy-Brownies-High-Protein-10g-Less-Sugar-Gluten-Free-i.1624412100.44418065230',
+                'almond'   => 'https://shopee.co.id/TrueBite-Protein-Snack-Almond-Crispy-Brownies-High-Protein-10g-Less-Sugar-Gluten-Free-i.1624412100.41667771939',
+                'cheese'   => 'https://shopee.co.id/True-Bite-Protein-Snack-Cheese-Crispy-Brownies-High-Protein-10g-Less-Sugar-Gluten-Free-i.1624412100.44168065411',
+                'peanut'   => 'https://shopee.co.id/TrueBite-Protein-Snack-Peanut-Crispy-Brownies-High-Protein-10g-Less-Sugar-Gluten-Free--i.1624412100.28341263349',
+            ];
+
+            // Prioritaskan dari Database (jika HomeController hanya take 3, ambil 4 produk dari DB)
+            try {
+                $dbProducts = \App\Models\Product::take(4)->get();
+                $fourProducts = ($dbProducts->count() >= 4) ? $dbProducts : ((isset($products) && count($products) === 4) ? $products : $canonicalProducts);
+            } catch (\Throwable $e) {
+                $fourProducts = (isset($products) && count($products) === 4) ? $products : $canonicalProducts;
+            }
+        @endphp
+
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            @foreach($products as $product)
+            @foreach($fourProducts as $product)
+                @php
+                    $slugLower = strtolower($product->slug ?? $product->name ?? '');
+                    $variantKey = 'original';
+                    foreach (['cheese', 'almond', 'peanut', 'original'] as $k) {
+                        if (str_contains($slugLower, $k)) {
+                            $variantKey = $k;
+                            break;
+                        }
+                    }
+
+                    $variantTitles = [
+                        'original' => 'TrueBite Crispy Brownies - Original',
+                        'almond'   => 'TrueBite Crispy Brownies - Almond',
+                        'cheese'   => 'TrueBite Crispy Brownies - Cheese',
+                        'peanut'   => 'TrueBite Crispy Brownies - Peanut',
+                    ];
+                    $productTitle = !empty($product->name) ? $product->name : ($variantTitles[$variantKey] ?? 'TrueBite Crispy Brownies');
+
+                    $prices = [
+                        'original' => 42000,
+                        'almond'   => 44000,
+                        'peanut'   => 43000,
+                        'cheese'   => 43000,
+                    ];
+                    // Baca harga langsung dari database jika ada, fallback ke default jika kosong
+                    $priceVal = !empty($product->price) ? $product->price : ($prices[$variantKey] ?? 42000);
+                    $proteinVal = !empty($product->protein_grams) ? $product->protein_grams : 10;
+
+                    // E-Commerce product photo
+                    $foundImage = null;
+                    if (isset($product->image) && $product->image && file_exists(public_path('images/products/' . $product->image))) {
+                        $foundImage = $product->image;
+                    } elseif (file_exists(public_path('images/products/crispy-brownies-' . $variantKey . '.jpg'))) {
+                        $foundImage = 'crispy-brownies-' . $variantKey . '.jpg';
+                    } elseif (file_exists(public_path('images/products/crispy-brownies-' . $variantKey . '.png'))) {
+                        $foundImage = 'crispy-brownies-' . $variantKey . '.png';
+                    }
+                    // Prioritaskan product_link dari DB, fallback ke shopeeMap
+                    $productShopeeUrl = (!empty($product->product_link))
+                        ? $product->product_link
+                        : ($shopeeMap[$variantKey] ?? 'https://s.shopee.co.id/BV46KyWYa');
+                @endphp
                 <article class="bg-[#F8E2BE] border-2 border-caramel/30 rounded-3xl p-6 flex flex-col justify-between hover:border-burnt/50 transition">
                     <div>
-                        {{-- Panel gambar atau placeholder bento --}}
-                        @if(isset($product->image) && $product->image && file_exists(public_path('images/products/' . $product->image)))
-                            <div class="w-full h-48 rounded-2xl overflow-hidden bg-cream mb-5 flex items-center justify-center p-2">
-                                <img src="{{ asset('images/products/' . $product->image) }}" alt="{{ $product->name }}" class="w-full h-full object-contain">
+                        {{-- Panel Foto E-Commerce Full Image (Tidak Terpotong) --}}
+                        @if($foundImage)
+                            <div class="w-full aspect-square rounded-2xl overflow-hidden bg-[#FAF0DC] mb-5 shadow-sm flex items-center justify-center p-2 border border-caramel/20">
+                                <a href="{{ $productShopeeUrl }}" target="_blank" rel="noopener noreferrer" class="block w-full h-full flex items-center justify-center">
+                                    <img src="{{ asset('images/products/' . $foundImage) }}" alt="{{ $product->name }}" class="w-full h-full object-contain object-center hover:scale-105 transition-transform duration-300" draggable="false">
+                                </a>
                             </div>
                         @else
                             {{-- Bento flat color placeholder tanpa foto rusak --}}
-                            <div class="w-full h-48 rounded-2xl bg-cocoa flex flex-col items-center justify-center text-center p-4 mb-5 border border-caramel/30">
-                                <span class="font-heading text-xl text-cream tracking-tight">{{ $product->name }}</span>
-                                <span class="text-xs font-bold text-amber mt-1 tracking-wider uppercase">Crispy Brownies</span>
-                                <span class="mt-3 px-3 py-1 rounded-full bg-caramel/60 text-[11px] text-cream font-bold">10g Protein</span>
-                            </div>
+                            <a href="{{ $productShopeeUrl }}" target="_blank" rel="noopener noreferrer">
+                                <div class="w-full h-52 rounded-2xl bg-cocoa flex flex-col items-center justify-center text-center p-4 mb-5 border border-caramel/30 hover:opacity-90 transition">
+                                    <span class="font-heading text-xl text-cream tracking-tight">{{ $product->name }}</span>
+                                    <span class="text-xs font-bold text-amber mt-1 tracking-wider uppercase">Crispy Brownies</span>
+                                    <span class="mt-3 px-3 py-1 rounded-full bg-caramel/60 text-[11px] text-cream font-bold">10g Protein</span>
+                                </div>
+                            </a>
                         @endif
 
                         <h3 class="font-heading text-xl text-cocoa tracking-tight mb-2">
@@ -109,7 +219,7 @@
                         {{-- Chip Nutrisi & Kalori --}}
                         <div class="flex flex-wrap items-center gap-2 mb-4">
                             <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-gorilla text-white">
-                                {{ $product->protein_grams }}g Protein
+                                10g Protein
                             </span>
                             @if(isset($product->calories) && $product->calories)
                                 <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-caramel/30 text-cocoa">
@@ -119,7 +229,7 @@
                         </div>
 
                         <div class="text-xl font-heading text-burnt mb-6">
-                            Rp {{ number_format($product->price, 0, ',', '.') }}
+                            Rp {{ number_format($priceVal, 0, ',', '.') }}
                         </div>
                     </div>
 
@@ -142,22 +252,46 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
                 <div>
-                    <span class="text-xs font-bold uppercase tracking-widest text-amber">Jangkauan Komunitas</span>
-                    <h2 class="font-heading text-3xl sm:text-5xl text-cream tracking-tight mt-1">Where to Find Us</h2>
+                    <h2 class="font-heading text-3xl sm:text-5xl text-cream tracking-tight mt-1">Good Bites, Around the Corner.</h2>
                     <p class="text-cream/80 text-sm sm:text-base max-w-lg mt-2">
-                        Tersedia langsung di partner gym dan arena padel favoritmu.
+                        Your favourite bites, closer than you think. Find TrueBite at selected gyms, padel clubs, and lifestyle spots around you.
                     </p>
                 </div>
                 {{-- TODO: Di routes/web.php rutenya adalah /location. --}}
                 <div>
                     <a href="/location" class="hidden sm:inline-flex items-center gap-2 btn-pill-secondary px-6 py-2.5 text-sm">
-                        Lihat Semua Lokasi &rarr;
+                        Explore All Spots &rarr;
                     </a>
                 </div>
             </div>
 
+            @php
+                $defaultLocations = [
+                    (object)[
+                        'name' => 'Verde Padel Club',
+                        'type' => 'Padel Court',
+                        'address' => 'Jl. Kemang Raya No. 12, Bangka, Mampang Prapatan, Jakarta Selatan',
+                        'google_maps_link' => 'https://maps.google.com/?q=Verde+Padel+Club',
+                    ],
+                    (object)[
+                        'name' => 'Powerhouse Fitness & Gym',
+                        'type' => 'Gym & Fitness',
+                        'address' => 'Jl. Senopati No. 45, Selong, Kebayoran Baru, Jakarta Selatan',
+                        'google_maps_link' => 'https://maps.google.com/?q=Powerhouse+Gym',
+                    ],
+                    (object)[
+                        'name' => 'The Movement Studio',
+                        'type' => 'Pilates & Wellness',
+                        'address' => 'Jl. Dharmawangsa VI No. 8, Pulo, Kebayoran Baru, Jakarta Selatan',
+                        'google_maps_link' => 'https://maps.google.com/?q=The+Movement+Studio',
+                    ],
+                ];
+                // Prioritaskan langsung dari database ($locations dari HomeController) jika ada data
+                $displayLocations = (isset($locations) && count($locations) > 0) ? $locations : $defaultLocations;
+            @endphp
+
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                @foreach($locations as $location)
+                @foreach($displayLocations as $location)
                     <article class="bg-caramel/25 border-2 border-caramel/40 rounded-3xl p-6 flex flex-col justify-between">
                         <div>
                             <div class="mb-3">
@@ -182,7 +316,7 @@
 
             <div class="mt-8 text-center sm:hidden">
                 <a href="/location" class="w-full inline-flex justify-center btn-pill-secondary px-6 py-3 text-sm">
-                    Lihat Semua Lokasi &rarr;
+                    Explore All Spots &rarr;
                 </a>
             </div>
         </div>
@@ -191,14 +325,35 @@
 
 
     {{-- SECTION 6: FAQ (Pertanyaan Umum) --}}
+    @php
+        $defaultFaqs = [
+            (object)[
+                'question' => 'What is TrueBite?',
+                'answer' => 'TrueBite is a healthier snack brand that brings together delicious taste and the goodness of protein. We create bites for people who want to enjoy their everyday snacks while making more mindful choices.'
+            ],
+            (object)[
+                'question' => 'What makes TrueBite different?',
+                'answer' => 'We believe you shouldn\'t have to choose between enjoying your food and making a more mindful choice. TrueBite combines a satisfying taste, enjoyable texture, and protein in one delicious bite.'
+            ],
+            (object)[
+                'question' => 'Who is TrueBite made for?',
+                'answer' => 'TrueBite is made for anyone who loves good food and wants a snack that fits into their active, busy lifestyle but still healthier. Whether you\'re heading to the gym, working, studying, or simply taking a break, there\'s always room for a good bite.'
+            ],
+        ];
+        // Prioritaskan langsung dari database tabel faqs jika ada data
+        $displayFaqs = (isset($faqs) && count($faqs) > 0) ? $faqs : $defaultFaqs;
+    @endphp
     <section class="py-12 sm:py-16 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-10">
-            <span class="text-xs font-bold uppercase tracking-widest text-caramel">Tanya Jawab</span>
-            <h2 class="font-heading text-3xl sm:text-4xl text-cocoa tracking-tight mt-1">FAQ</h2>
+            <span class="text-xs font-bold uppercase tracking-widest text-caramel">Frequently Asked Questions</span>
+            <h2 class="font-heading text-3xl sm:text-4xl text-cocoa tracking-tight mt-1">Curious About True Bite?</h2>
+            <p class="text-cocoa/80 text-sm sm:text-base max-w-xl mx-auto mt-2">
+                We've got you covered. From what's inside every bite to where you can find us, here are a few things you might want to know.
+            </p>
         </div>
 
         <div class="space-y-4">
-            @foreach($faqs->take(3) as $faq)
+            @foreach(collect($displayFaqs)->take(3) as $faq)
                 <article class="bg-[#F8E2BE] border-2 border-caramel/30 rounded-2xl sm:rounded-3xl p-6">
                     <h3 class="font-heading text-lg sm:text-xl text-cocoa mb-2">
                         {{ $faq->question }}
@@ -212,7 +367,7 @@
 
         <div class="mt-8 text-center">
             <a href="/faqs" class="inline-flex items-center gap-2 btn-pill-secondary px-8 py-3.5 text-sm font-bold border-2 border-caramel/40">
-                Lihat Semua FAQ &rarr;
+                See All Questions &rarr;
             </a>
         </div>
     </section>
@@ -221,17 +376,14 @@
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 sm:pb-20">
         <div class="bg-gorilla text-white rounded-3xl lg:rounded-4xl p-8 sm:p-12 lg:p-16 text-center space-y-6">
             <h2 class="font-heading text-3xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-tight max-w-2xl mx-auto">
-                A More Mindful Choice
+                Your Next Favourite Bite Awaits.
             </h2>
             <p class="text-white/95 text-base sm:text-lg max-w-xl mx-auto font-normal">
-                Snack lezat berprotein tinggi yang siap menemani setiap momen aktif dan dinamis harimu.
+                A little indulgence, a little more goodness. Make room for a snack that brings together irresistible taste and the goodness of protein.
             </p>
             <div class="pt-2">
-                <a href="{{ config('services.truebite.whatsapp') ?: 'https://wa.me/628113777353' }}?text={{ urlencode('Halo TrueBite, saya mau pesan snack protein sekarang!') }}" target="_blank" rel="noopener noreferrer" class="btn-pill-primary px-8 py-4 text-base font-bold inline-flex items-center gap-2 shadow-none border-2 border-white/20">
-                    <svg class="w-5 h-5 fill-current shrink-0" viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
-                    </svg>
-                    <span>Contact Us</span>
+                <a href="https://s.shopee.co.id/BV46KyWYa" target="_blank" rel="noopener noreferrer" class="btn-pill-primary px-8 py-4 text-base font-bold inline-flex items-center gap-2 shadow-none border-2 border-white/20">
+                    <span>Get Your TrueBite</span>
                 </a>
             </div>
         </div>
