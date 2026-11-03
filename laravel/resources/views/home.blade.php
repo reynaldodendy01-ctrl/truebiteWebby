@@ -195,9 +195,9 @@
                     <div>
                         {{-- Panel Foto E-Commerce Full Image (Tidak Terpotong) --}}
                         @if($foundImage)
-                            <div class="w-full aspect-square rounded-2xl overflow-hidden bg-[#FAF0DC] mb-5 shadow-sm flex items-center justify-center p-2 border border-caramel/20">
-                                <a href="{{ $productShopeeUrl }}" target="_blank" rel="noopener noreferrer" class="block w-full h-full flex items-center justify-center">
-                                    <img src="{{ asset('images/products/' . $foundImage) }}" alt="{{ $product->name }}" class="w-full h-full object-contain object-center hover:scale-105 transition-transform duration-300" draggable="false">
+                            <div class="w-full aspect-square rounded-2xl overflow-hidden mb-5 shadow-sm border border-caramel/25">
+                                <a href="{{ $productShopeeUrl }}" target="_blank" rel="noopener noreferrer" class="block w-full h-full">
+                                    <img src="{{ asset('images/products/' . $foundImage) }}" alt="{{ $product->name }}" class="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-300" draggable="false">
                                 </a>
                             </div>
                         @else

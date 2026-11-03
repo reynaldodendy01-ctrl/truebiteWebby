@@ -88,9 +88,9 @@
                     <div class="bg-caramel/25 border-2 border-caramel/40 rounded-3xl lg:rounded-4xl p-6 sm:p-8">
                         {{-- Panel Foto E-Commerce Full Image (Tidak Terpotong) --}}
                         @if($foundImage)
-                            <div class="w-full aspect-square max-h-[480px] rounded-2xl overflow-hidden bg-[#FAF0DC] mb-6 shadow-sm flex items-center justify-center p-3 border border-caramel/30">
-                                <a href="{{ $shopeeUrl }}" target="_blank" rel="noopener noreferrer" class="block w-full h-full flex items-center justify-center">
-                                    <img src="{{ asset('images/products/' . $foundImage) }}" alt="{{ $productTitle }}" class="w-full h-full object-contain object-center hover:scale-105 transition-transform duration-300" draggable="false">
+                            <div class="w-full aspect-square max-h-[480px] rounded-2xl overflow-hidden mb-6 shadow-sm border border-caramel/30">
+                                <a href="{{ $shopeeUrl }}" target="_blank" rel="noopener noreferrer" class="block w-full h-full">
+                                    <img src="{{ asset('images/products/' . $foundImage) }}" alt="{{ $productTitle }}" class="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-300" draggable="false">
                                 </a>
                             </div>
                         @else
