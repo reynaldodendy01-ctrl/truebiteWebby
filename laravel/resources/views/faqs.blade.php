@@ -4,55 +4,6 @@
 
 @section('content')
 
-@php
-    $defaultFaqs = [
-        (object)[
-            'question' => 'What is TrueBite?',
-            'answer' => 'TrueBite is a healthier snack brand that brings together delicious taste and the goodness of protein. We create bites for people who want to enjoy their everyday snacks while making more mindful choices.'
-        ],
-        (object)[
-            'question' => 'What makes TrueBite different?',
-            'answer' => 'We believe you shouldn\'t have to choose between enjoying your food and making a more mindful choice. TrueBite combines a satisfying taste, enjoyable texture, and protein in one delicious bite.'
-        ],
-        (object)[
-            'question' => 'Who is TrueBite made for?',
-            'answer' => 'TrueBite is made for anyone who loves good food and wants a snack that fits into their active, busy lifestyle but still healthier. Whether you\'re heading to the gym, working, studying, or simply taking a break, there\'s always room for a good bite.'
-        ],
-        (object)[
-            'question' => 'How much protein is in TrueBite?',
-            'answer' => 'The protein content in 1 TrueBite product is 10g. Full details regarding protein, calories, fat, and carbohydrates can be found on the product detail page for each variant.'
-        ],
-        (object)[
-            'question' => 'Does True Bite contain allergens?',
-            'answer' => 'Our products may contain ingredients that can trigger allergies. Please check the allergen information on the packaging before consuming. For further details, contact our team.'
-        ],
-        (object)[
-            'question' => 'How should I store True Bite?',
-            'answer' => 'TrueBite products can be stored at room temperature; avoid direct sunlight and humid areas to extend shelf life.'
-        ],
-        (object)[
-            'question' => 'Do you offer bulk or wholesale orders?',
-            'answer' => 'Absolutely! We\'re open to collaborations with gyms, padel clubs, cafés, retailers, and distributors. Reach out through our partnership inquiry channel to explore the possibilities.'
-        ],
-        (object)[
-            'question' => 'How can I become a True Bite partner?',
-            'answer' => 'We\'d love to hear from you! Send us a message through WhatsApp or our contact channel with your business name, business type, and location.'
-        ],
-        (object)[
-            'question' => 'Can I collaborate with True Bite as a content creator?',
-            'answer' => 'We’re always excited to connect with creators who share our love for good food and an active lifestyle. Reach out to us through Instagram or email to introduce yourself and your ideas.'
-        ],
-        (object)[
-            'question' => 'Is TrueBite halal?',
-            'answer' => 'Yes, TrueBite products are already halal certified.'
-        ],
-    ];
-
-    // Prioritaskan membaca langsung dari database tabel faqs jika ada data
-    $displayFaqs = (isset($faqs) && count($faqs) > 0) ? $faqs : $defaultFaqs;
-@endphp
-
-    {{-- HEADER / TITLE SECTION --}}
     <section class="py-12 sm:py-16 lg:py-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center max-w-2xl mx-auto">
             <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-caramel/25 text-cocoa text-xs font-bold tracking-wide mb-4">
@@ -66,9 +17,8 @@
             </p>
         </div>
 
-        {{-- FAQ LIST (Bento Cards di atas Latar Krem) --}}
         <div class="mt-12 space-y-5">
-            @forelse($displayFaqs as $faq)
+            @forelse($faqs as $faq)
                 <article class="bg-[#F8E2BE] border-2 border-caramel/30 rounded-2xl sm:rounded-3xl p-6 sm:p-8 hover:border-burnt/50 transition">
                     <h2 class="font-heading text-xl sm:text-2xl text-cocoa tracking-tight mb-3 flex items-start gap-3">
                         <span class="text-gorilla font-extrabold text-2xl leading-none select-none">Q.</span>
@@ -87,7 +37,6 @@
         </div>
     </section>
 
-    {{-- WHATSAPP ASSISTANCE BANNER --}}
     <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 sm:pb-20">
         <div class="bg-cocoa text-cream rounded-3xl lg:rounded-4xl p-8 sm:p-12 border-2 border-caramel/40 flex flex-col md:flex-row md:items-center justify-between gap-6 text-left">
             <div class="space-y-2">

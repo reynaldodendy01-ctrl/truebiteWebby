@@ -1,9 +1,5 @@
-{{-- resources/views/partials/footer.blade.php --}}
-
 @once
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 @endonce
 
@@ -43,12 +39,10 @@
 </style>
 
 <footer class="bg-custom-green text-white relative overflow-hidden font-sans w-full">
-    <!-- Garis Dekorasi Melengkung -->
     <div class="dashed-ring hidden lg:block"></div>
 
     <div class="max-w-7xl mx-auto px-6 py-8 relative z-10">
         
-        <!-- Top Info Bar -->
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 pb-6 border-b border-white/20 text-sm">
             @foreach ($topFeatures as $feature)
                 <div class="flex items-center space-x-3">
@@ -61,10 +55,8 @@
             @endforeach
         </div>
 
-        <!-- Main Content -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 py-10 items-center">
             
-            <!-- Brand & Social -->
             <div class="lg:col-span-4 space-y-4">
                 <h2 class="text-4xl font-extrabold tracking-wider">LOQO</h2>
                 <p class="text-xs text-green-100 max-w-xs leading-relaxed">
@@ -80,7 +72,6 @@
                 </div>
             </div>
 
-            <!-- Navigation Links -->
             <div class="lg:col-span-5 grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs">
                 <div>
                     <h4 class="font-bold mb-3 text-sm">Quick Link</h4>
@@ -119,7 +110,6 @@
                 </div>
             </div>
 
-            <!-- Image Container -->
             <div class="lg:col-span-3 flex justify-center lg:justify-end">
                 <div class="w-44 h-44 rounded-full overflow-hidden border-4 border-white shadow-md">
                     <img 
@@ -132,7 +122,6 @@
 
         </div>
 
-        <!-- Bottom Bar -->
         <div class="pt-6 border-t border-white/20 text-center text-xs space-y-3 opacity-90">
             <p>&copy; {{ date('Y') }} Green Minnow Kitchen. All Right Resolved</p>
             <div class="flex flex-wrap justify-center gap-4 text-[11px]">

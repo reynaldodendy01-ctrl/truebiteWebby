@@ -4,7 +4,6 @@
 
 @section('content')
 
-    {{-- HEADER / TITLE SECTION --}}
     <section class="py-12 sm:py-16 lg:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="max-w-3xl">
             <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-caramel/25 text-cocoa text-xs font-bold tracking-wide mb-4">
@@ -18,43 +17,10 @@
             </p>
         </div>
 
-        @php
-            $defaultLocations = [
-                (object)[
-                    'name' => 'Verde Padel Club',
-                    'type' => 'Padel Court',
-                    'address' => 'Jl. Kemang Raya No. 12, Bangka, Mampang Prapatan, Jakarta Selatan',
-                    'google_maps_link' => 'https://maps.google.com/?q=Verde+Padel+Club',
-                ],
-                (object)[
-                    'name' => 'Powerhouse Fitness & Gym',
-                    'type' => 'Gym & Fitness',
-                    'address' => 'Jl. Senopati No. 45, Selong, Kebayoran Baru, Jakarta Selatan',
-                    'google_maps_link' => 'https://maps.google.com/?q=Powerhouse+Gym',
-                ],
-                (object)[
-                    'name' => 'The Movement Studio',
-                    'type' => 'Pilates & Wellness',
-                    'address' => 'Jl. Dharmawangsa VI No. 8, Pulo, Kebayoran Baru, Jakarta Selatan',
-                    'google_maps_link' => 'https://maps.google.com/?q=The+Movement+Studio',
-                ],
-                (object)[
-                    'name' => 'Slam Padel Arena',
-                    'type' => 'Padel Court',
-                    'address' => 'Kawasan Pantai Maju Blok B No. 18, PIK, Jakarta Utara',
-                    'google_maps_link' => 'https://maps.google.com/?q=Slam+Padel+Arena',
-                ],
-            ];
-            // Prioritaskan langsung dari database ($locations dari LocationController) jika ada data
-            $displayLocations = (isset($locations) && count($locations) > 0) ? $locations : $defaultLocations;
-        @endphp
-
-        {{-- LOCATIONS GRID (Bento Cards) --}}
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mt-12">
-            @forelse($displayLocations as $location)
+            @forelse($locations as $location)
                 <article class="bg-[#F8E2BE] border-2 border-caramel/30 rounded-3xl p-6 sm:p-7 flex flex-col justify-between hover:border-burnt/50 transition">
                     <div>
-                        {{-- Type Chip --}}
                         <div class="flex items-center justify-between gap-2 mb-3">
                             <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-cocoa text-amber">
                                 {{ $location->type }}
@@ -71,7 +37,6 @@
                         </p>
                     </div>
 
-                    {{-- Google Maps Link --}}
                     @if($location->google_maps_link)
                         <div class="pt-4 border-t border-caramel/25">
                             <a href="{{ $location->google_maps_link }}" target="_blank" rel="noopener noreferrer" class="btn-pill-primary w-full text-center py-3 text-xs font-bold inline-flex items-center justify-center gap-1.5">
@@ -90,7 +55,6 @@
         </div>
     </section>
 
-    {{-- PARTNER INVITATION BANNER --}}
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 sm:pb-20">
         <div class="bg-cocoa text-cream rounded-3xl lg:rounded-4xl p-8 sm:p-12 border-2 border-caramel/40 flex flex-col md:flex-row md:items-center justify-between gap-6">
             <div class="space-y-2 max-w-xl">

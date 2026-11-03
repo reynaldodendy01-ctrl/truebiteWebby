@@ -6,16 +6,13 @@
     <title>@yield('title', 'TrueBite') - TrueBite Protein Snack</title>
     <meta name="description" content="TrueBite - A more mindful choice. Snack berprotein tinggi yang memadukan kelezatan rasa dan nutrisi untuk hari-hari aktifmu.">
 
-    <!-- Favicon -->
     <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
     <link rel="apple-touch-icon" href="{{ asset('favicon.png') }}">
 
-    <!-- Google Fonts: Poppins (700, 800), Montserrat (500, 600, 700), Roboto (400, 500) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;0,600;0,700;1,600&family=Poppins:ital,wght@0,600;0,700;0,800;1,700&family=Roboto:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -54,7 +51,6 @@
     </script>
 
     <style>
-        /* Base typography & color rules from TrueBite Brand Guidelines */
         body {
             font-family: 'Roboto', sans-serif;
             background-color: #FBE8C8;
@@ -73,7 +69,6 @@
             font-weight: 600;
         }
 
-        /* Pill button utilities */
         .btn-pill-primary {
             background-color: #DE5A17;
             color: #FFFFFF;
@@ -104,7 +99,6 @@
             transform: scale(0.97);
         }
 
-        /* Bento cards styling: flat, rounded-3xl / rounded-4xl, no heavy shadows */
         .bento-card {
             border-radius: 1.5rem;
         }
@@ -117,17 +111,14 @@
 </head>
 <body class="bg-cream text-cocoa min-h-screen flex flex-col selection:bg-gorilla selection:text-white">
 
-    <!-- Header / Navbar -->
     <header class="sticky top-0 z-50 bg-cocoa text-cream border-b border-caramel/30">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
                 
-                <!-- Brand / Logo -->
                 <a href="/" class="flex items-center group" style="overflow:visible;">
                     <img src="{{ asset('images/logo.png') }}" alt="TrueBite" class="w-auto object-contain transition group-hover:scale-105" style="height:7rem;" draggable="false">
                 </a>
 
-                <!-- Desktop Navigation Links -->
                 <nav class="hidden md:flex items-center space-x-1 lg:space-x-2 font-medium text-sm">
                     <a href="/" class="px-3.5 py-2 rounded-full transition {{ request()->is('/') ? 'text-amber font-bold bg-caramel/30' : 'text-cream/90 hover:text-amber hover:bg-caramel/20' }}">
                         Home
@@ -135,17 +126,14 @@
                     <a href="/menu" class="px-3.5 py-2 rounded-full transition {{ request()->is('menu*') ? 'text-amber font-bold bg-caramel/30' : 'text-cream/90 hover:text-amber hover:bg-caramel/20' }}">
                         The Bites
                     </a>
-                    {{-- TODO: Di routes/web.php rutenya adalah /location. Jika di masa mendatang disesuaikan menjadi /locations, sesuaikan link berikut. --}}
                     <a href="/location" class="px-3.5 py-2 rounded-full transition {{ (request()->is('location*') || request()->is('locations*')) ? 'text-amber font-bold bg-caramel/30' : 'text-cream/90 hover:text-amber hover:bg-caramel/20' }}">
                         Find Us
                     </a>
-
                     <a href="/faqs" class="px-3.5 py-2 rounded-full transition {{ request()->is('faqs*') ? 'text-amber font-bold bg-caramel/30' : 'text-cream/90 hover:text-amber hover:bg-caramel/20' }}">
                         FAQ
                     </a>
                 </nav>
 
-                <!-- Action CTA (WhatsApp Contact Us Link) -->
                 <div class="hidden sm:flex items-center">
                     <a href="{{ config('services.truebite.whatsapp') ?: 'https://wa.me/628113777353' }}?text={{ urlencode('Halo TrueBite, saya mau tanya/pesan snack protein!') }}" target="_blank" rel="noopener noreferrer" class="btn-pill-primary px-5 py-2.5 text-sm inline-flex items-center gap-2">
                         <svg class="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24" aria-hidden="true">
@@ -155,7 +143,6 @@
                     </a>
                 </div>
 
-                <!-- Mobile Menu Button -->
                 <div class="flex items-center md:hidden">
                     <button type="button" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="p-2 rounded-xl text-cream hover:text-amber hover:bg-caramel/30 focus:outline-none" aria-label="Buka menu navigasi">
                         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
@@ -166,7 +153,6 @@
             </div>
         </div>
 
-        <!-- Mobile Menu Dropdown -->
         <div id="mobile-menu" class="hidden md:hidden bg-cocoa border-t border-caramel/40 px-4 pt-3 pb-6 space-y-2">
             <a href="/" class="block px-4 py-3 rounded-2xl text-base font-bold transition {{ request()->is('/') ? 'bg-gorilla text-white' : 'text-cream hover:bg-caramel/30' }}">
                 Home
@@ -177,7 +163,6 @@
             <a href="/location" class="block px-4 py-3 rounded-2xl text-base font-bold transition {{ (request()->is('location*') || request()->is('locations*')) ? 'bg-gorilla text-white' : 'text-cream hover:bg-caramel/30' }}">
                 Find Us
             </a>
-
             <a href="/faqs" class="block px-4 py-3 rounded-2xl text-base font-bold transition {{ request()->is('faqs*') ? 'bg-gorilla text-white' : 'text-cream hover:bg-caramel/30' }}">
                 FAQ
             </a>
@@ -192,26 +177,21 @@
         </div>
     </header>
 
-    <!-- Main Content Area -->
     <main class="flex-grow">
         @yield('content')
     </main>
 
-    <!-- Footer -->
     <footer class="bg-cocoa text-cream border-t border-caramel/40 mt-auto">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
             <div class="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 items-start">
                 
-                <!-- Brand Column -->
                 <div class="md:col-span-5 space-y-3">
-                    {{-- Logo link ke home, tanpa crop, shift ke atas via margin-top negatif --}}
                     <a href="/" style="display:block; margin-top:-1.0rem; margin-left:-1.7rem;">
                         <img src="{{ asset('images/logo.png') }}" alt="TrueBite" class="w-auto object-contain" style="height:7rem;" draggable="false">
                     </a>
                     <p class="text-cream/80 text-sm max-w-sm leading-relaxed" style="margin-top:-1.2rem;">
                         A little indulgence. <em>A more mindful choice.</em><br>Delicious bites with the goodness of protein, made for your everyday.
                     </p>
-                    {{-- Social Media Links --}}
                     <div class="flex items-center gap-3 pt-1">
                         <a href="https://instagram.com/truebite.official" target="_blank" rel="noopener noreferrer" aria-label="Instagram TrueBite" class="text-cream/70 hover:text-amber transition">
                             <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
@@ -225,7 +205,6 @@
                     </div>
                 </div>
 
-                <!-- Navigation Links -->
                 <div class="md:col-span-3 space-y-3">
                     <h4 class="font-heading text-lg text-cream tracking-wide">Navigasi</h4>
                     <ul class="space-y-2 text-sm">
@@ -244,7 +223,6 @@
                     </ul>
                 </div>
 
-                <!-- Get In Touch -->
                 <div class="md:col-span-4 space-y-3">
                     <h4 class="font-heading text-lg text-cream tracking-wide">Get In Touch</h4>
                     <p class="text-cream/80 text-sm">
@@ -263,7 +241,6 @@
 
             </div>
 
-            <!-- Bottom Copyright Bar -->
             <div class="mt-12 pt-8 border-t border-caramel/30 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-cream/70">
                 <p>&copy; 2026 TrueBite. All Rights Reserved.</p>
                 <p class="text-cream/50">Made with love, one bite at a time.</p>
