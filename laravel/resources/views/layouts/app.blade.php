@@ -123,9 +123,8 @@
             <div class="flex items-center justify-between h-20">
                 
                 <!-- Brand / Logo -->
-                <a href="/" class="flex items-center gap-2.5 group">
-                    <img src="{{ asset('images/logo.png') }}" alt="TrueBite" class="h-14 w-auto object-contain transition group-hover:scale-105">
-                    <span class="font-heading text-2xl sm:text-3xl tracking-tight text-cream group-hover:text-amber transition">TrueBite</span>
+                <a href="/" class="flex items-center group" style="overflow:visible;">
+                    <img src="{{ asset('images/logo.png') }}" alt="TrueBite" class="w-auto object-contain transition group-hover:scale-105" style="height:7rem;" draggable="false">
                 </a>
 
                 <!-- Desktop Navigation Links -->
@@ -204,12 +203,12 @@
             <div class="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 items-start">
                 
                 <!-- Brand Column -->
-                <div class="md:col-span-5 space-y-4">
-                    <div class="flex items-center gap-2.5">
-                        <img src="{{ asset('images/logo.png') }}" alt="TrueBite" class="h-14 w-auto object-contain">
-                        <span class="font-heading text-3xl tracking-tight text-cream">TrueBite</span>
-                    </div>
-                    <p class="text-cream/80 text-sm max-w-sm leading-relaxed">
+                <div class="md:col-span-5 space-y-3">
+                    {{-- Logo link ke home, tanpa crop, shift ke atas via margin-top negatif --}}
+                    <a href="/" style="display:block; margin-top:-1.0rem; margin-left:-1.7rem;">
+                        <img src="{{ asset('images/logo.png') }}" alt="TrueBite" class="w-auto object-contain" style="height:7rem;" draggable="false">
+                    </a>
+                    <p class="text-cream/80 text-sm max-w-sm leading-relaxed" style="margin-top:-1.2rem;">
                         A little indulgence. <em>A more mindful choice.</em><br>Delicious bites with the goodness of protein, made for your everyday.
                     </p>
                     {{-- Social Media Links --}}

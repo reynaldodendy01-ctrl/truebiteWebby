@@ -33,16 +33,15 @@
                     </div>
                 </div>
 
-                {{-- Right Column: Packaging Photo TrueBite --}}
-                <div class="lg:col-span-6 flex items-stretch justify-center overflow-visible">
-                    <div class="relative w-full flex items-center justify-center" style="margin-top:-3rem; margin-bottom:-3rem;">
+                {{-- Right Column: Packaging Hero (4 varian) --}}
+                <div class="lg:col-span-6 flex items-center justify-center overflow-visible" style="margin-top:-3rem; margin-bottom:-3rem;">
+                    <div class="relative w-full flex items-center justify-center">
                         {{-- Ambient warm glow --}}
-                        <div class="absolute inset-0 rounded-full blur-3xl -z-10" style="background:radial-gradient(ellipse at center,rgba(254,158,50,0.35) 0%,transparent 60%); transform:scale(1.2);"></div>
+                        <div class="absolute inset-0 rounded-full blur-3xl -z-10 pointer-events-none" style="background:radial-gradient(ellipse at center,rgba(254,158,50,0.35) 0%,transparent 60%); transform:scale(1.2);"></div>
                         <a href="https://s.shopee.co.id/BV46KyWYa" target="_blank" rel="noopener noreferrer" class="block w-full cursor-pointer">
-                            <img src="{{ asset('images/packaging-hero.png') }}" 
-                                 alt="TrueBite Crispy Brownies - Almond & Cheese" 
+                            <img src="{{ asset('images/packaging-hero.png') }}"
+                                 alt="TrueBite Crispy Brownies - 4 Varian"
                                  class="w-full h-auto object-contain hover:scale-105 transition-transform duration-300"
-                                 style="filter: drop-shadow(0 32px 72px rgba(76,29,16,0.40)); max-width:none;"
                                  draggable="false">
                         </a>
                     </div>
@@ -287,7 +286,7 @@
                     ],
                 ];
                 // Prioritaskan langsung dari database ($locations dari HomeController) jika ada data
-                $displayLocations = (isset($locations) && count($locations) > 0) ? $locations : $defaultLocations;
+                $displayLocations = (isset($locations) && count($locations) > 0) ? collect($locations)->take(6) : collect($defaultLocations)->take(6);
             @endphp
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
