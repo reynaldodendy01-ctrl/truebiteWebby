@@ -124,7 +124,7 @@
                 
                 <!-- Brand / Logo -->
                 <a href="/" class="flex items-center gap-2.5 group">
-                    <img src="{{ asset('images/logo.png') }}" alt="TrueBite" class="h-9 w-auto object-contain transition group-hover:scale-105">
+                    <img src="{{ asset('images/logo.png') }}" alt="TrueBite" class="h-14 w-auto object-contain transition group-hover:scale-105">
                     <span class="font-heading text-2xl sm:text-3xl tracking-tight text-cream group-hover:text-amber transition">TrueBite</span>
                 </a>
 
@@ -206,7 +206,7 @@
                 <!-- Brand Column -->
                 <div class="md:col-span-5 space-y-4">
                     <div class="flex items-center gap-2.5">
-                        <img src="{{ asset('images/logo.png') }}" alt="TrueBite" class="h-8 w-auto object-contain">
+                        <img src="{{ asset('images/logo.png') }}" alt="TrueBite" class="h-14 w-auto object-contain">
                         <span class="font-heading text-3xl tracking-tight text-cream">TrueBite</span>
                     </div>
                     <p class="text-cream/80 text-sm max-w-sm leading-relaxed">
