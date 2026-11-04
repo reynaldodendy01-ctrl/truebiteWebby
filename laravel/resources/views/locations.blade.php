@@ -7,7 +7,7 @@
     <section class="py-12 sm:py-16 lg:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="max-w-3xl">
             <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-caramel/25 text-cocoa text-xs font-bold tracking-wide mb-4">
-                <span>📍 Official Partner Locations</span>
+                <span>Official Partner Locations</span>
             </div>
             <h1 class="font-heading text-4xl sm:text-6xl text-cocoa tracking-tight leading-tight">
                 Catch Us Around.
@@ -25,7 +25,6 @@
                             <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-cocoa text-amber">
                                 {{ $location->type }}
                             </span>
-                            <span class="text-[11px] font-bold text-caramel">Partner Terverifikasi</span>
                         </div>
 
                         <h2 class="font-heading text-2xl text-cocoa tracking-tight mb-2">
@@ -40,8 +39,8 @@
                     @if($location->google_maps_link)
                         <div class="pt-4 border-t border-caramel/25">
                             <a href="{{ $location->google_maps_link }}" target="_blank" rel="noopener noreferrer" class="btn-pill-primary w-full text-center py-3 text-xs font-bold inline-flex items-center justify-center gap-1.5">
-                                <span>Buka di Google Maps</span>
-                                <span>&rarr;</span>
+                                <span>Open in Google Maps</span>
+                                {{-- <span>&rarr;</span> --}}
                             </a>
                         </div>
                     @endif

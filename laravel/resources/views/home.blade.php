@@ -18,7 +18,7 @@
                     </h1>
 
                     <p class="text-white/95 text-base sm:text-lg max-w-xl font-normal leading-relaxed">
-                        <em>A more mindful choice</em> that brings together the pleasure of a delicious snack and the goodness of protein. Made for your active, busy days, it's a little indulgence that offers more &mdash; without compromising on taste.
+                        <em>A more mindful choice</em> that brings together the pleasure of a delicious snack and the goodness of protein. Made for your active, busy days, it's a little indulgence that offers more, without compromising on taste.
                     </p>
 
                     <div class="flex flex-wrap items-center gap-4 pt-2">
