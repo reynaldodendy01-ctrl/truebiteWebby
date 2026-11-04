@@ -40,7 +40,7 @@
                         <div class="pt-4 border-t border-caramel/25">
                             <a href="{{ $location->google_maps_link }}" target="_blank" rel="noopener noreferrer" class="btn-pill-primary w-full text-center py-3 text-xs font-bold inline-flex items-center justify-center gap-1.5">
                                 <span>Open in Google Maps</span>
-                                {{-- <span>&rarr;</span> --}}
+                                
                             </a>
                         </div>
                     @endif

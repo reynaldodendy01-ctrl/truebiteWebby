@@ -47,25 +47,6 @@
         </div>
     </section>
 
-    @isset($statistics)
-        <section class="bg-cocoa text-cream py-8 border-y border-caramel/40">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-                    @foreach ($statistics as $stat)
-                        <div class="space-y-1">
-                            <div class="font-heading text-3xl sm:text-4xl text-amber">
-                                {{ $stat->value }}
-                            </div>
-                            <div class="text-xs sm:text-sm text-cream/80 font-medium">
-                                {{ $stat->label }}
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-            </div>
-        </section>
-    @endisset
-
     <section class="py-16 sm:py-20 lg:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
             <div>
