@@ -1,32 +1,161 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'TrueBite') - TrueBite</title>
+    <title>@yield('title', 'TrueBite') - TrueBite Protein Snack</title>
+    <meta name="description" content="TrueBite - A more mindful choice. Snack berprotein tinggi yang memadukan kelezatan rasa dan nutrisi untuk hari-hari aktifmu.">
+
+    <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
+    <link rel="apple-touch-icon" href="{{ asset('favicon.png') }}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;0,600;0,700;1,600&family=Poppins:ital,wght@0,600;0,700;0,800;1,700&family=Roboto:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
+
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
-<body>
+<body class="bg-cream text-cocoa min-h-screen flex flex-col selection:bg-gorilla selection:text-white">
 
-<header>
-    <h1>TRUEBITE.</h1>
-    <nav>
-        <a href="/">Home</a>
-        <a href="/menu">Menu</a>
-        <a href="/faqs">FAQ</a>
-        <a href="/location">Lokasi</a>
-        <a href="/testimonials">Testimonials</a>
-    </nav>
-</header>
+    <header class="sticky top-0 z-50 bg-cocoa text-cream border-b border-caramel/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <a href="/" class="flex items-center group" style="overflow:visible;">
+                    <img src="{{ asset('images/logo.png') }}" alt="TrueBite" class="w-auto object-contain transition group-hover:scale-105" style="height:7rem;" draggable="false">
+                </a>
 
+                <nav class="hidden md:flex items-center space-x-1 lg:space-x-2 font-medium text-sm">
+                    <a href="/" class="px-3.5 py-2 rounded-full transition {{ request()->is('/') ? 'text-amber font-bold bg-caramel/30' : 'text-cream/90 hover:text-amber hover:bg-caramel/20' }}">
+                        Home
+                    </a>
+                    <a href="/menu" class="px-3.5 py-2 rounded-full transition {{ request()->is('menu*') ? 'text-amber font-bold bg-caramel/30' : 'text-cream/90 hover:text-amber hover:bg-caramel/20' }}">
+                        The Bites
+                    </a>
+                    <a href="/location" class="px-3.5 py-2 rounded-full transition {{ (request()->is('location*') || request()->is('locations*')) ? 'text-amber font-bold bg-caramel/30' : 'text-cream/90 hover:text-amber hover:bg-caramel/20' }}">
+                        Find Us
+                    </a>
+                    <a href="/faqs" class="px-3.5 py-2 rounded-full transition {{ request()->is('faqs*') ? 'text-amber font-bold bg-caramel/30' : 'text-cream/90 hover:text-amber hover:bg-caramel/20' }}">
+                        FAQ
+                    </a>
+                </nav>
 
-<main>
-    @yield('content')
-</main>
+                <div class="hidden sm:flex items-center">
+                    <a href="{{ config('services.truebite.whatsapp') ?: 'https://wa.me/628113777353' }}?text={{ urlencode('Halo TrueBite, saya mau tanya/pesan snack protein!') }}" target="_blank" rel="noopener noreferrer" class="btn-pill-primary px-5 py-2.5 text-sm inline-flex items-center gap-2">
+                        <svg class="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+                        </svg>
+                        <span>Contact Us</span>
+                    </a>
+                </div>
 
+                <div class="flex items-center md:hidden">
+                    <button type="button" id="mobile-menu-button" class="p-2 rounded-xl text-cream hover:text-amber hover:bg-caramel/30 focus:outline-none" aria-label="Buka menu navigasi">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
 
-<footer>
-    <p>&copy; {{date('Y')}} TrueBite Protein Snack.</p>
-</footer>
+        <div id="mobile-menu" class="hidden md:hidden bg-cocoa border-t border-caramel/40 px-4 pt-3 pb-6 space-y-2">
+            <a href="/" class="block px-4 py-3 rounded-2xl text-base font-bold transition {{ request()->is('/') ? 'bg-gorilla text-white' : 'text-cream hover:bg-caramel/30' }}">
+                Home
+            </a>
+            <a href="/menu" class="block px-4 py-3 rounded-2xl text-base font-bold transition {{ request()->is('menu*') ? 'bg-gorilla text-white' : 'text-cream hover:bg-caramel/30' }}">
+                The Bites
+            </a>
+            <a href="/location" class="block px-4 py-3 rounded-2xl text-base font-bold transition {{ (request()->is('location*') || request()->is('locations*')) ? 'bg-gorilla text-white' : 'text-cream hover:bg-caramel/30' }}">
+                Find Us
+            </a>
+            <a href="/faqs" class="block px-4 py-3 rounded-2xl text-base font-bold transition {{ request()->is('faqs*') ? 'bg-gorilla text-white' : 'text-cream hover:bg-caramel/30' }}">
+                FAQ
+            </a>
+            <div class="pt-2">
+                <a href="{{ config('services.truebite.whatsapp') ?: 'https://wa.me/628113777353' }}?text={{ urlencode('Halo TrueBite, saya mau tanya/pesan snack protein!') }}" target="_blank" rel="noopener noreferrer" class="w-full text-center inline-flex items-center justify-center gap-2 btn-pill-primary py-3 text-sm">
+                    <svg class="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+                    </svg>
+                    <span>Contact Us</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        @yield('content')
+    </main>
+
+    <footer class="bg-cocoa text-cream border-t border-caramel/40 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 items-start">
+                
+                <div class="md:col-span-5 space-y-3">
+                    <a href="/" style="display:block; margin-top:-1.0rem; margin-left:-1.7rem;">
+                        <img src="{{ asset('images/logo.png') }}" alt="TrueBite" class="w-auto object-contain" style="height:7rem;" draggable="false">
+                    </a>
+                    <p class="text-cream/80 text-sm max-w-sm leading-relaxed" style="margin-top:-1.2rem;">
+                        A little indulgence. <em>A more mindful choice.</em><br>Delicious bites with the goodness of protein, made for your everyday.
+                    </p>
+                    <div class="flex items-center gap-3 pt-1">
+                        <a href="https://instagram.com/truebite.official" target="_blank" rel="noopener noreferrer" aria-label="Instagram TrueBite" class="text-cream/70 hover:text-amber transition">
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        </a>
+                        <a href="https://tiktok.com/@therealtruebite" target="_blank" rel="noopener noreferrer" aria-label="TikTok TrueBite" class="text-cream/70 hover:text-amber transition">
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.89a8.23 8.23 0 004.84 1.56V7a4.85 4.85 0 01-1.07-.31z"/></svg>
+                        </a>
+                        <a href="mailto:therealtruebite@gmail.com" aria-label="Email TrueBite" class="text-cream/70 hover:text-amber transition">
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="md:col-span-3 space-y-3">
+                    <h4 class="font-heading text-lg text-cream tracking-wide">Navigasi</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li>
+                            <a href="/" class="text-cream/80 hover:text-amber transition">Home</a>
+                        </li>
+                        <li>
+                            <a href="/menu" class="text-cream/80 hover:text-amber transition">The Bites</a>
+                        </li>
+                        <li>
+                            <a href="/location" class="text-cream/80 hover:text-amber transition">Find Us</a>
+                        </li>
+                        <li>
+                            <a href="/faqs" class="text-cream/80 hover:text-amber transition">FAQ</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="md:col-span-4 space-y-3">
+                    <h4 class="font-heading text-lg text-cream tracking-wide">Get In Touch</h4>
+                    <p class="text-cream/80 text-sm">
+                        Have a question, collaboration idea, or partnership opportunity?
+                    </p>
+                    <div class="space-y-2">
+                        <a href="{{ config('services.truebite.whatsapp') ?: 'https://wa.me/628113777353' }}?text={{ urlencode('Halo TrueBite!') }}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 btn-pill-primary px-5 py-2.5 text-xs font-bold">
+                            <svg class="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+                            </svg>
+                            <span>Contact Us</span>
+                        </a>
+                        <p class="text-cream/60 text-xs">therealtruebite@gmail.com</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="mt-12 pt-8 border-t border-caramel/30 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-cream/70">
+                <p>&copy; 2026 TrueBite. All Rights Reserved.</p>
+                <p class="text-cream/50">Made with love, one bite at a time.</p>
+            </div>
+        </div>
+    </footer>
 
 </body>
 </html>

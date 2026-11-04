@@ -15,7 +15,10 @@ return new class extends Migration
             $table->integer('price');
             $table->integer('protein_grams');
             $table->integer('calories');
-            $table->string('image')->nullable();
+            $table->string('flavor_name')->nullable();
+            $table->string('dietary_label')->nullable();
+            $table->string('image_path')->nullable();
+            $table->string('shopee_url', 500)->nullable();
             $table->text('description');
             $table->timestamps();
         });

@@ -7,13 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class FAQ extends Model
 {
-    /** @use HasFactory<\Database\Factories\FAQFactory> */
     use HasFactory;
 
-    protected $table = 'faqs'; 
+    protected $table = 'faqs';
+
     protected $fillable = [
         'question',
         'answer',
     ];
 }
-

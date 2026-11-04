@@ -7,13 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Location extends Model
 {
-    /** @use HasFactory<\Database\Factories\LocationFactory> */
     use HasFactory;
 
     protected $fillable = [
         'name',
         'type',
         'address',
-        'google_maps_link'
+        'google_maps_link',
     ];
 }

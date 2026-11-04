@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
-use App\Http\Requests\StoreProductRequest;
-use App\Http\Requests\UpdateProductRequest;
 
 class ProductController extends Controller
 {
@@ -15,7 +13,7 @@ class ProductController extends Controller
         return view('menu', compact('products'));
     }
 
-    public function show($slug)
+    public function show(string $slug)
     {
         $product = Product::where('slug', $slug)->firstOrFail();
 
