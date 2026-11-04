@@ -4,33 +4,6 @@
 
 @section('content')
 
-@php
-    $shopeeMap = [
-        'original' => 'https://shopee.co.id/TrueBite-Protein-Snack-Original-Dark-Chocolate-Crispy-Brownies-High-Protein-10g-Less-Sugar-Gluten-Free-i.1624412100.44418065230?extraParams=%7B%22display_model_id%22%3A266486702864%2C%22model_selection_logic%22%3A3%7D&image_ids=id-11134207-8224o-mg7ludkcy68ae2',
-        'cheese'   => 'https://shopee.co.id/True-Bite-Protein-Snack-Cheese-Crispy-Brownies-High-Protein-10g-Less-Sugar-Gluten-Free-i.1624412100.44168065411?extraParams=%7B%22display_model_id%22%3A208693754210%2C%22model_selection_logic%22%3A3%7D&image_ids=id-11134207-8224o-mg7ludkcwrnu09',
-        'almond'   => 'https://shopee.co.id/TrueBite-Protein-Snack-Almond-Crispy-Brownies-High-Protein-10g-Less-Sugar-Gluten-Free-i.1624412100.41667771939?extraParams=%7B%22display_model_id%22%3A296462919706%2C%22model_selection_logic%22%3A3%7D&image_ids=id-11134207-8224u-mg7ludjyfmz29d',
-        'peanut'   => 'https://shopee.co.id/TrueBite-Protein-Snack-Peanut-Crispy-Brownies-High-Protein-10g-Less-Sugar-Gluten-Free--i.1624412100.28341263349?extraParams=%7B%22display_model_id%22%3A286485405240%2C%22model_selection_logic%22%3A3%7D&image_ids=id-11134207-8224q-mg7ludkcvd3ebc',
-    ];
-
-    $productSlug = strtolower($product->slug ?? $product->name);
-    $variantKey = 'original';
-    foreach (['cheese', 'almond', 'peanut', 'original'] as $key) {
-        if (str_contains($productSlug, $key)) {
-            $variantKey = $key;
-            break;
-        }
-    }
-    $shopeeUrl = $shopeeMap[$variantKey] ?? 'https://s.shopee.co.id/BV46KyWYa';
-
-    $flavorNames = [
-        'original' => 'rich dark chocolate flavor',
-        'almond'   => 'premium almond flavor',
-        'cheese'   => 'premium cheese flavor',
-        'peanut'   => 'crunchy peanut flavor',
-    ];
-    $currentFlavor = $flavorNames[$variantKey] ?? 'delicious flavor';
-@endphp
-
     <div class="bg-cocoa text-cream py-10 sm:py-14 lg:py-18 min-h-screen">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
@@ -44,14 +17,14 @@
                 
                 <div class="lg:col-span-6 space-y-6">
                     <div class="bg-caramel/25 border-2 border-caramel/40 rounded-3xl lg:rounded-4xl p-6 sm:p-8">
-                        @if($product->image)
+                        @if($product->image_path)
                             <div class="w-full aspect-square max-h-[480px] rounded-2xl overflow-hidden mb-6 shadow-sm border border-caramel/30">
-                                <a href="{{ $shopeeUrl }}" target="_blank" rel="noopener noreferrer" class="block w-full h-full">
-                                    <img src="{{ asset('images/products/' . $product->image) }}" alt="{{ $product->name }}" class="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-300" draggable="false">
+                                <a href="{{ $product->shopee_url }}" target="_blank" rel="noopener noreferrer" class="block w-full h-full">
+                                    <img src="{{ asset($product->image_path) }}" alt="{{ $product->name }}" class="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-300" draggable="false">
                                 </a>
                             </div>
                         @else
-                            <a href="{{ $shopeeUrl }}" target="_blank" rel="noopener noreferrer">
+                            <a href="{{ $product->shopee_url }}" target="_blank" rel="noopener noreferrer">
                                 <div class="w-full h-72 sm:h-96 rounded-2xl bg-cocoa flex flex-col items-center justify-center text-center p-6 mb-6 border border-caramel/40 hover:opacity-90 transition">
                                     <span class="font-heading text-3xl sm:text-4xl text-cream tracking-tight">{{ $product->name }}</span>
                                     <span class="text-xs sm:text-sm font-bold text-amber mt-2 tracking-widest uppercase">Crispy Brownies</span>
@@ -104,7 +77,7 @@
                                 </li>
                                 <li class="flex items-start gap-2.5">
                                     <span class="w-2 h-2 rounded-full bg-amber shrink-0 mt-1.5"></span>
-                                    <span><strong>{{ $variantKey === 'almond' ? 'Gluten-free' : 'Gluten-free & low sugar' }}</strong>, safe for a healthy lifestyle</span>
+                                    <span><strong>{{ $dietaryLabel }}</strong>, safe for a healthy lifestyle</span>
                                 </li>
                                 <li class="flex items-start gap-2.5">
                                     <span class="w-2 h-2 rounded-full bg-amber shrink-0 mt-1.5"></span>
@@ -112,7 +85,7 @@
                                 </li>
                                 <li class="flex items-start gap-2.5">
                                     <span class="w-2 h-2 rounded-full bg-amber shrink-0 mt-1.5"></span>
-                                    <span>Crispy brownie texture with a {{ $currentFlavor }}</span>
+                                    <span>Crispy brownie texture with a {{ $flavorName }}</span>
                                 </li>
                                 <li class="flex items-start gap-2.5">
                                     <span class="w-2 h-2 rounded-full bg-amber shrink-0 mt-1.5"></span>
@@ -149,7 +122,7 @@
                         </section>
 
                         <div class="pt-4 border-t border-caramel/30 space-y-3">
-                            <a href="{{ $shopeeUrl }}" target="_blank" rel="noopener noreferrer" class="w-full text-center btn-pill-primary py-4 text-base font-bold inline-flex items-center justify-center gap-2">
+                            <a href="{{ $product->shopee_url }}" target="_blank" rel="noopener noreferrer" class="w-full text-center btn-pill-primary py-4 text-base font-bold inline-flex items-center justify-center gap-2">
                                 <span>Order Now</span>
                                 <span>&rarr;</span>
                             </a>

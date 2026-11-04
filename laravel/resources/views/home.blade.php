@@ -83,29 +83,11 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             @foreach($products as $product)
-                @php
-                    $slugLower = strtolower($product->slug ?? $product->name ?? '');
-                    $variantKey = 'original';
-                    foreach (['cheese', 'almond', 'peanut', 'original'] as $k) {
-                        if (str_contains($slugLower, $k)) {
-                            $variantKey = $k;
-                            break;
-                        }
-                    }
-
-                    $shopeeMap = [
-                        'original' => 'https://shopee.co.id/TrueBite-Protein-Snack-Original-Dark-Chocolate-Crispy-Brownies-High-Protein-10g-Less-Sugar-Gluten-Free-i.1624412100.44418065230',
-                        'almond'   => 'https://shopee.co.id/TrueBite-Protein-Snack-Almond-Crispy-Brownies-High-Protein-10g-Less-Sugar-Gluten-Free-i.1624412100.41667771939',
-                        'cheese'   => 'https://shopee.co.id/True-Bite-Protein-Snack-Cheese-Crispy-Brownies-High-Protein-10g-Less-Sugar-Gluten-Free-i.1624412100.44168065411',
-                        'peanut'   => 'https://shopee.co.id/TrueBite-Protein-Snack-Peanut-Crispy-Brownies-High-Protein-10g-Less-Sugar-Gluten-Free--i.1624412100.28341263349',
-                    ];
-                    $productShopeeUrl = $shopeeMap[$variantKey] ?? 'https://s.shopee.co.id/BV46KyWYa';
-                @endphp
                 <article class="bg-[#F8E2BE] border-2 border-caramel/30 rounded-3xl p-6 flex flex-col justify-between hover:border-burnt/50 transition">
                     <div>
                         <div class="w-full aspect-square rounded-2xl overflow-hidden mb-5 shadow-sm border border-caramel/25">
-                            <a href="{{ $productShopeeUrl }}" target="_blank" rel="noopener noreferrer" class="block w-full h-full">
-                                <img src="{{ asset('images/products/' . $product->image) }}" alt="{{ $product->name }}" class="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-300" draggable="false">
+                            <a href="{{ $product->shopee_url }}" target="_blank" rel="noopener noreferrer" class="block w-full h-full">
+                                <img src="{{ asset($product->image_path) }}" alt="{{ $product->name }}" class="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-300" draggable="false">
                             </a>
                         </div>
 
