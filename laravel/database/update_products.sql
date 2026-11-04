@@ -12,21 +12,33 @@
 
 
 -- ==============================================================================
--- LANGKAH 0: TAMBAH KOLOM product_link (jalankan sekali saja)
+-- LANGKAH 0: TAMBAH KOLOM (jalankan sekali saja)
 -- Jika kolom sudah ada, statement ini akan diabaikan secara otomatis.
 -- ==============================================================================
 
 ALTER TABLE `products`
-    ADD COLUMN IF NOT EXISTS `product_link` VARCHAR(2048) NULL DEFAULT NULL
-    COMMENT 'Tautan Shopee spesifik per varian produk'
-    AFTER `image`;
+    ADD COLUMN IF NOT EXISTS `flavor_name` VARCHAR(255) NULL DEFAULT NULL
+    COMMENT 'Deskripsi varian rasa'
+    AFTER `calories`;
+
+ALTER TABLE `products`
+    ADD COLUMN IF NOT EXISTS `dietary_label` VARCHAR(255) NULL DEFAULT NULL
+    COMMENT 'Label diet bebas gluten / rendah gula'
+    AFTER `flavor_name`;
+
+ALTER TABLE `products`
+    ADD COLUMN IF NOT EXISTS `image_path` VARCHAR(255) NULL DEFAULT NULL
+    AFTER `dietary_label`;
+
+ALTER TABLE `products`
+    ADD COLUMN IF NOT EXISTS `shopee_url` VARCHAR(2048) NULL DEFAULT NULL
+    AFTER `image_path`;
 
 
 -- ------------------------------------------------------------------------------
 -- 1. TABEL PRODUCTS
--- Mencakup kolom baru: product_link (URL Shopee per varian)
 -- ------------------------------------------------------------------------------
-INSERT INTO `products` (`id`, `name`, `slug`, `price`, `protein_grams`, `calories`, `image`, `product_link`, `description`, `created_at`, `updated_at`)
+INSERT INTO `products` (`id`, `name`, `slug`, `price`, `protein_grams`, `calories`, `flavor_name`, `dietary_label`, `image_path`, `shopee_url`, `description`, `created_at`, `updated_at`)
 VALUES
 (
     1,
@@ -34,8 +46,10 @@ VALUES
     'truebite-crispy-brownies-original',
     42000,
     10,
-    180,
-    'crispy-brownies-original.jpg',
+    260,
+    'rich dark chocolate flavor',
+    'Gluten-free & low sugar',
+    'images/products/crispy-brownies-original.jpg',
     'https://shopee.co.id/TrueBite-Protein-Snack-Original-Dark-Chocolate-Crispy-Brownies-High-Protein-10g-Less-Sugar-Gluten-Free-i.1624412100.44418065230',
     'A healthy, high-protein snack combining a rich dark chocolate flavor with an indulgent crispy brownie texture. Each pack contains 10g of protein, formulated to be gluten-free and low in sugar, and sweetened with natural stevia for a smarter snacking choice.',
     NOW(),
@@ -47,8 +61,10 @@ VALUES
     'truebite-crispy-brownies-almond',
     44000,
     10,
-    190,
-    'crispy-brownies-almond.jpg',
+    260,
+    'premium almond flavor',
+    'Gluten-free',
+    'images/products/crispy-brownies-almond.jpg',
     'https://shopee.co.id/TrueBite-Protein-Snack-Almond-Crispy-Brownies-High-Protein-10g-Less-Sugar-Gluten-Free-i.1624412100.41667771939',
     'A healthy, high-protein snack combining a rich almond flavor with an indulgent crispy brownie texture. Each pack contains 10g of protein, formulated to be gluten-free, and sweetened with natural stevia for a smarter snacking choice.',
     NOW(),
@@ -60,8 +76,10 @@ VALUES
     'truebite-crispy-brownies-cheese',
     43000,
     10,
-    190,
-    'crispy-brownies-cheese.jpg',
+    260,
+    'premium cheese flavor',
+    'Gluten-free & low sugar',
+    'images/products/crispy-brownies-cheese.jpg',
     'https://shopee.co.id/True-Bite-Protein-Snack-Cheese-Crispy-Brownies-High-Protein-10g-Less-Sugar-Gluten-Free-i.1624412100.44168065411',
     'A healthy, high-protein snack combining a rich cheese flavor with an indulgent crispy brownie texture. Each pack contains 10g of protein, formulated to be gluten-free and low in sugar, and sweetened with natural stevia for a smarter snacking choice.',
     NOW(),
@@ -73,8 +91,10 @@ VALUES
     'truebite-crispy-brownies-peanut',
     43000,
     10,
-    190,
-    'crispy-brownies-peanut.jpg',
+    270,
+    'crunchy peanut flavor',
+    'Gluten-free & low sugar',
+    'images/products/crispy-brownies-peanut.jpg',
     'https://shopee.co.id/TrueBite-Protein-Snack-Peanut-Crispy-Brownies-High-Protein-10g-Less-Sugar-Gluten-Free--i.1624412100.28341263349',
     'A healthy, high-protein snack combining a rich peanut flavor with an indulgent crispy brownie texture. Each pack contains 10g of protein, formulated to be gluten-free and low in sugar, and sweetened with natural stevia for a smarter snacking choice.',
     NOW(),
@@ -86,8 +106,10 @@ ON DUPLICATE KEY UPDATE
     `price`        = VALUES(`price`),
     `protein_grams`= VALUES(`protein_grams`),
     `calories`     = VALUES(`calories`),
-    `image`        = VALUES(`image`),
-    `product_link` = VALUES(`product_link`),
+    `flavor_name`  = VALUES(`flavor_name`),
+    `dietary_label`= VALUES(`dietary_label`),
+    `image_path`   = VALUES(`image_path`),
+    `shopee_url`   = VALUES(`shopee_url`),
     `description`  = VALUES(`description`),
     `updated_at`   = NOW();
 

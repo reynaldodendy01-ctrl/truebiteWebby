@@ -77,7 +77,7 @@
                                 </li>
                                 <li class="flex items-start gap-2.5">
                                     <span class="w-2 h-2 rounded-full bg-amber shrink-0 mt-1.5"></span>
-                                    <span><strong>{{ $dietaryLabel }}</strong>, safe for a healthy lifestyle</span>
+                                    <span><strong>{{ $product->dietary_label }}</strong>, safe for a healthy lifestyle</span>
                                 </li>
                                 <li class="flex items-start gap-2.5">
                                     <span class="w-2 h-2 rounded-full bg-amber shrink-0 mt-1.5"></span>
@@ -85,7 +85,7 @@
                                 </li>
                                 <li class="flex items-start gap-2.5">
                                     <span class="w-2 h-2 rounded-full bg-amber shrink-0 mt-1.5"></span>
-                                    <span>Crispy brownie texture with a {{ $flavorName }}</span>
+                                    <span>Crispy brownie texture with a {{ $product->flavor_name }}</span>
                                 </li>
                                 <li class="flex items-start gap-2.5">
                                     <span class="w-2 h-2 rounded-full bg-amber shrink-0 mt-1.5"></span>

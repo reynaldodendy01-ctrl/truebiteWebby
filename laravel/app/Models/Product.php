@@ -15,25 +15,10 @@ class Product extends Model
         'price',
         'protein_grams',
         'calories',
-        'image',
+        'flavor_name',
+        'dietary_label',
         'image_path',
         'shopee_url',
         'description',
     ];
-
-    public const DEFAULT_SHOPEE_URL = 'https://s.shopee.co.id/BV46KyWYa';
-
-    public function getShopeeUrlAttribute(?string $value): string
-    {
-        return $value ?: self::DEFAULT_SHOPEE_URL;
-    }
-
-    public function getImagePathAttribute(?string $value): ?string
-    {
-        if ($value) {
-            return $value;
-        }
-
-        return $this->image ? 'images/products/' . $this->image : null;
-    }
 }

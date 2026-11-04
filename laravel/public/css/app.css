@@ -1,0 +1,56 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #FBE8C8;
+    color: #4C1D10;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, .font-heading {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+}
+
+.font-subheading {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+}
+
+.btn-pill-primary {
+    background-color: #DE5A17;
+    color: #FFFFFF;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    border-radius: 9999px;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+}
+.btn-pill-primary:hover {
+    opacity: 0.92;
+}
+.btn-pill-primary:active {
+    transform: scale(0.97);
+}
+
+.btn-pill-secondary {
+    background-color: #FBE8C8;
+    color: #4C1D10;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    border-radius: 9999px;
+    transition: transform 0.15s ease, background-color 0.15s ease;
+}
+.btn-pill-secondary:hover {
+    background-color: #f7ddb2;
+}
+.btn-pill-secondary:active {
+    transform: scale(0.97);
+}
+
+.bento-card {
+    border-radius: 1.5rem;
+}
+@media (min-width: 768px) {
+    .bento-card {
+        border-radius: 2rem;
+    }
+}

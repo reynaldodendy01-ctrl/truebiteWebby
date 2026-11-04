@@ -4,12 +4,41 @@
 -- 1. products  (4 Varian TrueBite Crispy Brownies, 10g Protein, Foto E-Commerce)
 -- 2. faqs      (10 Item FAQ Resmi TrueBite)
 -- 3. locations (4 Titik Lokasi Partner Resmi: Padel Club, Gym & Fitness, Studio)
+--
+-- CARA IMPORT:
+--   Jalankan file ini di phpMyAdmin > Import, atau via MySQL CLI:
+--   mysql -u [user] -p [nama_database] < update_products.sql
 -- ==============================================================================
+
+
+-- ==============================================================================
+-- LANGKAH 0: TAMBAH KOLOM (jalankan sekali saja)
+-- Jika kolom sudah ada, statement ini akan diabaikan secara otomatis.
+-- ==============================================================================
+
+ALTER TABLE `products`
+    ADD COLUMN IF NOT EXISTS `flavor_name` VARCHAR(255) NULL DEFAULT NULL
+    COMMENT 'Deskripsi varian rasa'
+    AFTER `calories`;
+
+ALTER TABLE `products`
+    ADD COLUMN IF NOT EXISTS `dietary_label` VARCHAR(255) NULL DEFAULT NULL
+    COMMENT 'Label diet bebas gluten / rendah gula'
+    AFTER `flavor_name`;
+
+ALTER TABLE `products`
+    ADD COLUMN IF NOT EXISTS `image_path` VARCHAR(255) NULL DEFAULT NULL
+    AFTER `dietary_label`;
+
+ALTER TABLE `products`
+    ADD COLUMN IF NOT EXISTS `shopee_url` VARCHAR(2048) NULL DEFAULT NULL
+    AFTER `image_path`;
+
 
 -- ------------------------------------------------------------------------------
 -- 1. TABEL PRODUCTS
 -- ------------------------------------------------------------------------------
-INSERT INTO `products` (`id`, `name`, `slug`, `price`, `protein_grams`, `calories`, `image`, `description`, `created_at`, `updated_at`)
+INSERT INTO `products` (`id`, `name`, `slug`, `price`, `protein_grams`, `calories`, `flavor_name`, `dietary_label`, `image_path`, `shopee_url`, `description`, `created_at`, `updated_at`)
 VALUES
 (
     1,
@@ -17,8 +46,11 @@ VALUES
     'truebite-crispy-brownies-original',
     42000,
     10,
-    180,
-    'crispy-brownies-original.jpg',
+    260,
+    'rich dark chocolate flavor',
+    'Gluten-free & low sugar',
+    'images/products/crispy-brownies-original.jpg',
+    'https://shopee.co.id/TrueBite-Protein-Snack-Original-Dark-Chocolate-Crispy-Brownies-High-Protein-10g-Less-Sugar-Gluten-Free-i.1624412100.44418065230',
     'A healthy, high-protein snack combining a rich dark chocolate flavor with an indulgent crispy brownie texture. Each pack contains 10g of protein, formulated to be gluten-free and low in sugar, and sweetened with natural stevia for a smarter snacking choice.',
     NOW(),
     NOW()
@@ -29,8 +61,11 @@ VALUES
     'truebite-crispy-brownies-almond',
     44000,
     10,
-    190,
-    'crispy-brownies-almond.jpg',
+    260,
+    'premium almond flavor',
+    'Gluten-free',
+    'images/products/crispy-brownies-almond.jpg',
+    'https://shopee.co.id/TrueBite-Protein-Snack-Almond-Crispy-Brownies-High-Protein-10g-Less-Sugar-Gluten-Free-i.1624412100.41667771939',
     'A healthy, high-protein snack combining a rich almond flavor with an indulgent crispy brownie texture. Each pack contains 10g of protein, formulated to be gluten-free, and sweetened with natural stevia for a smarter snacking choice.',
     NOW(),
     NOW()
@@ -41,8 +76,11 @@ VALUES
     'truebite-crispy-brownies-cheese',
     43000,
     10,
-    190,
-    'crispy-brownies-cheese.jpg',
+    260,
+    'premium cheese flavor',
+    'Gluten-free & low sugar',
+    'images/products/crispy-brownies-cheese.jpg',
+    'https://shopee.co.id/True-Bite-Protein-Snack-Cheese-Crispy-Brownies-High-Protein-10g-Less-Sugar-Gluten-Free-i.1624412100.44168065411',
     'A healthy, high-protein snack combining a rich cheese flavor with an indulgent crispy brownie texture. Each pack contains 10g of protein, formulated to be gluten-free and low in sugar, and sweetened with natural stevia for a smarter snacking choice.',
     NOW(),
     NOW()
@@ -53,21 +91,28 @@ VALUES
     'truebite-crispy-brownies-peanut',
     43000,
     10,
-    190,
-    'crispy-brownies-peanut.jpg',
+    270,
+    'crunchy peanut flavor',
+    'Gluten-free & low sugar',
+    'images/products/crispy-brownies-peanut.jpg',
+    'https://shopee.co.id/TrueBite-Protein-Snack-Peanut-Crispy-Brownies-High-Protein-10g-Less-Sugar-Gluten-Free--i.1624412100.28341263349',
     'A healthy, high-protein snack combining a rich peanut flavor with an indulgent crispy brownie texture. Each pack contains 10g of protein, formulated to be gluten-free and low in sugar, and sweetened with natural stevia for a smarter snacking choice.',
     NOW(),
     NOW()
 )
 ON DUPLICATE KEY UPDATE
-    `name` = VALUES(`name`),
-    `slug` = VALUES(`slug`),
-    `price` = VALUES(`price`),
-    `protein_grams` = VALUES(`protein_grams`),
-    `calories` = VALUES(`calories`),
-    `image` = VALUES(`image`),
-    `description` = VALUES(`description`),
-    `updated_at` = NOW();
+    `name`         = VALUES(`name`),
+    `slug`         = VALUES(`slug`),
+    `price`        = VALUES(`price`),
+    `protein_grams`= VALUES(`protein_grams`),
+    `calories`     = VALUES(`calories`),
+    `flavor_name`  = VALUES(`flavor_name`),
+    `dietary_label`= VALUES(`dietary_label`),
+    `image_path`   = VALUES(`image_path`),
+    `shopee_url`   = VALUES(`shopee_url`),
+    `description`  = VALUES(`description`),
+    `updated_at`   = NOW();
+
 
 -- ------------------------------------------------------------------------------
 -- 2. TABEL FAQS (10 Item FAQ Resmi)
@@ -104,14 +149,14 @@ VALUES
 ),
 (
     5,
-    'Does True Bite contain allergens?',
+    'Does TrueBite contain allergens?',
     'Our products may contain ingredients that can trigger allergies. Please check the allergen information on the packaging before consuming. For further details, contact our team.',
     NOW(),
     NOW()
 ),
 (
     6,
-    'How should I store True Bite?',
+    'How should I store TrueBite?',
     'TrueBite products can be stored at room temperature; avoid direct sunlight and humid areas to extend shelf life.',
     NOW(),
     NOW()
@@ -119,21 +164,21 @@ VALUES
 (
     7,
     'Do you offer bulk or wholesale orders?',
-    'Absolutely! We\'re open to collaborations with gyms, padel clubs, cafés, retailers, and distributors. Reach out through our partnership inquiry channel to explore the possibilities.',
+    'Absolutely! We\'re open to collaborations with gyms, padel clubs, cafes, retailers, and distributors. Reach out through our partnership inquiry channel to explore the possibilities.',
     NOW(),
     NOW()
 ),
 (
     8,
-    'How can I become a True Bite partner?',
+    'How can I become a TrueBite partner?',
     'We\'d love to hear from you! Send us a message through WhatsApp or our contact channel with your business name, business type, and location.',
     NOW(),
     NOW()
 ),
 (
     9,
-    'Can I collaborate with True Bite as a content creator?',
-    'We’re always excited to connect with creators who share our love for good food and an active lifestyle. Reach out to us through Instagram or email to introduce yourself and your ideas.',
+    'Can I collaborate with TrueBite as a content creator?',
+    'We\'re always excited to connect with creators who share our love for good food and an active lifestyle. Reach out to us through Instagram or email to introduce yourself and your ideas.',
     NOW(),
     NOW()
 ),
@@ -145,9 +190,10 @@ VALUES
     NOW()
 )
 ON DUPLICATE KEY UPDATE
-    `question` = VALUES(`question`),
-    `answer` = VALUES(`answer`),
+    `question`   = VALUES(`question`),
+    `answer`     = VALUES(`answer`),
     `updated_at` = NOW();
+
 
 -- ------------------------------------------------------------------------------
 -- 3. TABEL LOCATIONS (Partner Resmi TrueBite)
@@ -191,8 +237,8 @@ VALUES
     NOW()
 )
 ON DUPLICATE KEY UPDATE
-    `name` = VALUES(`name`),
-    `type` = VALUES(`type`),
-    `address` = VALUES(`address`),
-    `google_maps_link` = VALUES(`google_maps_link`),
-    `updated_at` = NOW();
+    `name`            = VALUES(`name`),
+    `type`            = VALUES(`type`),
+    `address`         = VALUES(`address`),
+    `google_maps_link`= VALUES(`google_maps_link`),
+    `updated_at`      = NOW();

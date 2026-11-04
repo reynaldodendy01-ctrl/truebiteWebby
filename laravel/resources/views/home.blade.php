@@ -36,9 +36,9 @@
                         <div class="absolute inset-0 rounded-full blur-3xl -z-10 pointer-events-none" style="background:radial-gradient(ellipse at center,rgba(254,158,50,0.35) 0%,transparent 60%); transform:scale(1.2);"></div>
                         <a href="https://s.shopee.co.id/BV46KyWYa" target="_blank" rel="noopener noreferrer" class="block w-full cursor-pointer">
                             <img src="{{ asset('images/packaging-hero.png') }}"
-                                 alt="TrueBite Crispy Brownies - 4 Varian"
-                                 class="w-full h-auto object-contain hover:scale-105 transition-transform duration-300"
-                                 draggable="false">
+                                alt="TrueBite Crispy Brownies - 4 Varian"
+                                class="w-full h-auto object-contain hover:scale-105 transition-transform duration-300"
+                                draggable="false">
                         </a>
                     </div>
                 </div>

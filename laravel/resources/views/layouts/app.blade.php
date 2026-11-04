@@ -14,100 +14,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;0,600;0,700;1,600&family=Poppins:ital,wght@0,600;0,700;0,800;1,700&family=Roboto:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        gorilla: '#DE5A17',
-                        primary: '#DE5A17',
-                        cocoa: '#4C1D10',
-                        'burnt-orange': '#DE5A17',
-                        burnt: '#DE5A17',
-                        amber: '#FE9E32',
-                        cyan: '#01CAFF',
-                        red: '#E02E2E',
-                        cream: '#FBE8C8',
-                        caramel: '#7A3B1F',
-                    },
-                    fontFamily: {
-                        poppins: ['"Poppins"', 'sans-serif'],
-                        montserrat: ['"Montserrat"', 'sans-serif'],
-                        roboto: ['"Roboto"', 'sans-serif'],
-                        heading: ['"Poppins"', 'sans-serif'],
-                        subheading: ['"Montserrat"', 'sans-serif'],
-                        sans: ['"Roboto"', 'sans-serif'],
-                        bricolage: ['"Poppins"', 'sans-serif'],
-                    },
-                    borderRadius: {
-                        '2xl': '1rem',
-                        '3xl': '1.5rem',
-                        '4xl': '2rem',
-                        '5xl': '2.5rem',
-                    }
-                }
-            }
-        }
-    </script>
+    <script src="{{ asset('js/app.js') }}"></script>
 
-    <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #FBE8C8;
-            color: #4C1D10;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        h1, h2, h3, h4, .font-heading {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 700;
-            letter-spacing: -0.025em;
-        }
-
-        .font-subheading {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-        }
-
-        .btn-pill-primary {
-            background-color: #DE5A17;
-            color: #FFFFFF;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            border-radius: 9999px;
-            transition: transform 0.15s ease, opacity 0.15s ease;
-        }
-        .btn-pill-primary:hover {
-            opacity: 0.92;
-        }
-        .btn-pill-primary:active {
-            transform: scale(0.97);
-        }
-
-        .btn-pill-secondary {
-            background-color: #FBE8C8;
-            color: #4C1D10;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            border-radius: 9999px;
-            transition: transform 0.15s ease, background-color 0.15s ease;
-        }
-        .btn-pill-secondary:hover {
-            background-color: #f7ddb2;
-        }
-        .btn-pill-secondary:active {
-            transform: scale(0.97);
-        }
-
-        .bento-card {
-            border-radius: 1.5rem;
-        }
-        @media (min-width: 768px) {
-            .bento-card {
-                border-radius: 2rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 <body class="bg-cream text-cocoa min-h-screen flex flex-col selection:bg-gorilla selection:text-white">
 
@@ -144,7 +53,7 @@
                 </div>
 
                 <div class="flex items-center md:hidden">
-                    <button type="button" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="p-2 rounded-xl text-cream hover:text-amber hover:bg-caramel/30 focus:outline-none" aria-label="Buka menu navigasi">
+                    <button type="button" id="mobile-menu-button" class="p-2 rounded-xl text-cream hover:text-amber hover:bg-caramel/30 focus:outline-none" aria-label="Buka menu navigasi">
                         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
                         </svg>
